@@ -331,50 +331,19 @@
       
         
           
-            <h1 id="修饰器"><a href="#修饰器" class="headerlink" title="修饰器"></a>修饰器</h1><h2 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h2><pre><code>#登陆限制修饰器
+          修饰器代码示例：#登陆限制修饰器
 def login_required(func):
 @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程
 def wrapper(*args, **kwargs):
-    if session.get(&apos;user_id&apos;):
-        return func(*args, **kwargs)
-    else:
-        return jsonify({
-            &quot;message&quot;:&quot;fail to signin&quot;
-        }), 401
-return wrapper
-</code></pre><h2 id="引例："><a href="#引例：" class="headerlink" title="引例："></a>引例：</h2><blockquote>
-<p>每个人都有的内裤主要功能是用来遮羞，但是到了冬天它没法为我们防风御寒，咋办？我们想到的一个办法就是把内裤改造一下，让它变得更厚更长，这样一来，它不仅有遮羞功能，还能提供保暖，不过有个问题，这个内裤被我们改造成了长裤后，虽然还有遮羞功能，但本质上它不再是一条真正的内裤了。于是聪明的人们发明长裤，在不影响内裤的前提下，直接把长裤套在了内裤外面，这样内裤还是内裤，有了长裤后宝宝再也不冷了。装饰器就像我们这里说的长裤，在不影响内裤作用的前提下，给我们的身子提供了保暖的功效。</p>
-</blockquote>
-<h2 id="个人理解："><a href="#个人理解：" class="headerlink" title="个人理解："></a>个人理解：</h2><p>修饰器本质上是一个函数，只不过这个函数比较特殊。  </p>
-<ol>
-<li><p>例如当我们需要确定某一个函数运行所需的时间时，我们可以写一个函数来完成。</p>
-<pre><code>import time
-
-def time_func():
-    s_time = time.time()
-    func()                  #所需要确定运行时间的函数
-    e_time = time.time()
-    print &apos;运行时间：%s&apos; % (e_time - s_time)
-</code></pre><ul>
-<li>通过以上代码可以看出，我们改变了原有函数  func  的调用方式，当程序中有很多函数需要确定运行时间时，我们如果对所有函数都进行这样的改写不仅工作量是巨大的，而且改出的bug或许是……  </li>
-</ul>
-</li>
-<li><p>改用修饰器的方式我们可以写成：</p>
-<pre><code>def times(func):        #定义一个修饰器，可以保存在一个单独的文件中，使用时引入
-    def wrapper(*arg, **kwarg):
-        s_time = time.time()
-        func()
-        e_time = time.time()
-        print &apos;函数耗时%s&apos; % (e_time - s_time)
-    return wrapper
-
-@times          #定义函数时加上修饰器
-def ...............
-</code></pre></li>
-</ol>
-<p>可以看出正如修饰器的名字所言，修饰器就是对函数做了一个包装、修饰，但是并不改变原函数固有的功能。</p>
-
-          
+    if sess
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/10/python-之器/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -496,9 +465,16 @@ def ...............
       
         
           
-            <p>第一个自搭的博客，以后会分享自己在学习过程中的收获。</p>
+          第一个自搭的博客，以后会分享自己在学习过程中的收获。
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/12/My-New-Post/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -620,17 +596,15 @@ def ...............
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/10/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
