@@ -103,17 +103,17 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="修饰器 代码示例： #登陆限制修饰器 def login_required(func): @wraps(func)-----------------#wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return fu">
+<meta name="description" content="修饰器代码示例：#登陆限制修饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return func(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 之器">
 <meta property="og:url" content="http://Darren2017.github.io/2018/04/10/python-之器/index.html">
 <meta property="og:site_name" content="Darren">
-<meta property="og:description" content="修饰器 代码示例： #登陆限制修饰器 def login_required(func): @wraps(func)-----------------#wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return fu">
+<meta property="og:description" content="修饰器代码示例：#登陆限制修饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return func(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T00:50:33.719Z">
+<meta property="og:updated_time" content="2018-04-10T03:59:39.521Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 之器">
-<meta name="twitter:description" content="修饰器 代码示例： #登陆限制修饰器 def login_required(func): @wraps(func)-----------------#wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return fu">
+<meta name="twitter:description" content="修饰器代码示例：#登陆限制修饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return func(">
 
 
 
@@ -330,11 +330,9 @@
       
 
       
-        <h1 id="修饰器"><a href="#修饰器" class="headerlink" title="修饰器"></a>修饰器</h1><ol>
-<li><p>代码示例：</p>
-<pre><code>#登陆限制修饰器
+        <h1 id="修饰器"><a href="#修饰器" class="headerlink" title="修饰器"></a>修饰器</h1><h2 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h2><pre><code>#登陆限制修饰器
 def login_required(func):
-@wraps(func)-----------------#wraps，可用作一个装饰器，简化调用update_wrapper的过程
+@wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程
 def wrapper(*args, **kwargs):
     if session.get(&apos;user_id&apos;):
         return func(*args, **kwargs)
@@ -343,8 +341,37 @@ def wrapper(*args, **kwargs):
             &quot;message&quot;:&quot;fail to signin&quot;
         }), 401
 return wrapper
+</code></pre><h2 id="引例："><a href="#引例：" class="headerlink" title="引例："></a>引例：</h2><blockquote>
+<p>每个人都有的内裤主要功能是用来遮羞，但是到了冬天它没法为我们防风御寒，咋办？我们想到的一个办法就是把内裤改造一下，让它变得更厚更长，这样一来，它不仅有遮羞功能，还能提供保暖，不过有个问题，这个内裤被我们改造成了长裤后，虽然还有遮羞功能，但本质上它不再是一条真正的内裤了。于是聪明的人们发明长裤，在不影响内裤的前提下，直接把长裤套在了内裤外面，这样内裤还是内裤，有了长裤后宝宝再也不冷了。装饰器就像我们这里说的长裤，在不影响内裤作用的前提下，给我们的身子提供了保暖的功效。</p>
+</blockquote>
+<h2 id="个人理解："><a href="#个人理解：" class="headerlink" title="个人理解："></a>个人理解：</h2><p>修饰器本质上是一个函数，只不过这个函数比较特殊。  </p>
+<ol>
+<li><p>例如当我们需要确定某一个函数运行所需的时间时，我们可以写一个函数来完成。</p>
+<pre><code>import time
+
+def time_func():
+    s_time = time.time()
+    func()                  #所需要确定运行时间的函数
+    e_time = time.time()
+    print &apos;运行时间：%s&apos; % (e_time - s_time)
+</code></pre><ul>
+<li>通过以上代码可以看出，我们改变了原有函数  func  的调用方式，当程序中有很多函数需要确定运行时间时，我们如果对所有函数都进行这样的改写不仅工作量是巨大的，而且改出的bug或许是……  </li>
+</ul>
+</li>
+<li><p>改用修饰器的方式我们可以写成：</p>
+<pre><code>def times(func):        #定义一个修饰器，可以保存在一个单独的文件中，使用时引入
+    def wrapper(*arg, **kwarg):
+        s_time = time.time()
+        func()
+        e_time = time.time()
+        print &apos;函数耗时%s&apos; % (e_time - s_time)
+    return wrapper
+
+@times          #定义函数时加上修饰器
+def ...............
 </code></pre></li>
 </ol>
+<p>可以看出正如修饰器的名字所言，修饰器就是对函数做了一个包装、修饰，但是并不改变原函数固有的功能。</p>
 
       
     </div>
@@ -494,7 +521,7 @@ return wrapper
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#修饰器"><span class="nav-number">1.</span> <span class="nav-text">修饰器</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#修饰器"><span class="nav-number">1.</span> <span class="nav-text">修饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例："><span class="nav-number">1.1.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引例："><span class="nav-number">1.2.</span> <span class="nav-text">引例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人理解："><span class="nav-number">1.3.</span> <span class="nav-text">个人理解：</span></a></li></ol></li></ol></div>
             
 
           </div>
