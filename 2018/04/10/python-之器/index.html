@@ -103,17 +103,17 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="修饰器代码示例：#登陆限制修饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return func(">
+<meta name="description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：#登陆限制装饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 之器">
 <meta property="og:url" content="http://Darren2017.github.io/2018/04/10/python-之器/index.html">
 <meta property="og:site_name" content="Darren">
-<meta property="og:description" content="修饰器代码示例：#登陆限制修饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return func(">
+<meta property="og:description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：#登陆限制装饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T03:59:39.521Z">
+<meta property="og:updated_time" content="2018-04-10T07:32:40.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 之器">
-<meta name="twitter:description" content="修饰器代码示例：#登陆限制修饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return func(">
+<meta name="twitter:description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：#登陆限制装饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper">
 
 
 
@@ -330,7 +330,10 @@
       
 
       
-        <h1 id="修饰器"><a href="#修饰器" class="headerlink" title="修饰器"></a>修饰器</h1><h2 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h2><pre><code>#登陆限制修饰器
+        <h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><ul>
+<li>装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。  </li>
+</ul>
+<h2 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h2><pre><code>#登陆限制装饰器
 def login_required(func):
 @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程
 def wrapper(*args, **kwargs):
@@ -344,7 +347,7 @@ return wrapper
 </code></pre><h2 id="引例："><a href="#引例：" class="headerlink" title="引例："></a>引例：</h2><blockquote>
 <p>每个人都有的内裤主要功能是用来遮羞，但是到了冬天它没法为我们防风御寒，咋办？我们想到的一个办法就是把内裤改造一下，让它变得更厚更长，这样一来，它不仅有遮羞功能，还能提供保暖，不过有个问题，这个内裤被我们改造成了长裤后，虽然还有遮羞功能，但本质上它不再是一条真正的内裤了。于是聪明的人们发明长裤，在不影响内裤的前提下，直接把长裤套在了内裤外面，这样内裤还是内裤，有了长裤后宝宝再也不冷了。装饰器就像我们这里说的长裤，在不影响内裤作用的前提下，给我们的身子提供了保暖的功效。</p>
 </blockquote>
-<h2 id="个人理解："><a href="#个人理解：" class="headerlink" title="个人理解："></a>个人理解：</h2><p>修饰器本质上是一个函数，只不过这个函数比较特殊。  </p>
+<h2 id="个人理解："><a href="#个人理解：" class="headerlink" title="个人理解："></a>个人理解：</h2><p>装饰器本质上是一个函数或者类，只不过这个函数/类比较特殊。  </p>
 <ol>
 <li><p>例如当我们需要确定某一个函数运行所需的时间时，我们可以写一个函数来完成。</p>
 <pre><code>import time
@@ -358,8 +361,9 @@ def time_func():
 <li>通过以上代码可以看出，我们改变了原有函数  func  的调用方式，当程序中有很多函数需要确定运行时间时，我们如果对所有函数都进行这样的改写不仅工作量是巨大的，而且改出的bug或许是……  </li>
 </ul>
 </li>
-<li><p>改用修饰器的方式我们可以写成：</p>
-<pre><code>def times(func):        #定义一个修饰器，可以保存在一个单独的文件中，使用时引入
+<li><p>改用装饰器的方式我们可以写成：</p>
+<pre><code>def times(func):        #定义一个装饰器，可以保存在一个单独的文件中，使用时引入
+    @wraps(func)
     def wrapper(*arg, **kwarg):
         s_time = time.time()
         func()
@@ -367,11 +371,46 @@ def time_func():
         print &apos;函数耗时%s&apos; % (e_time - s_time)
     return wrapper
 
-@times          #定义函数时加上修饰器
-def ...............
-</code></pre></li>
+@times          #定义函数时加上装饰器, =&gt;func = times(func)
+def func:...............
+</code></pre><ul>
+<li>可以看出正如装饰器的名字所言，装饰器就是对函数做了一个包装、修饰，但是并不改变原函数固有的功能。（python支持将函数作为参数传入另一个函数）</li>
+</ul>
+</li>
+<li>关于 *args **kwargs:<ol>
+<li>我们所要装饰的函数有很多是需要参数的，所以说我们可能会想到在wrapper()直接添加参数，但是如果函数所需要的参数个数是不确定的，那如果每次都修改所定义的装饰器，那么装饰器便失去了其普适性。所以引入了*args **kwargs支持接受动态参数。</li>
+<li>*args表示任何多个无名参数，它是一个tuple；**kwargs表示关键字参数，它是一个dict.</li>
 </ol>
-<p>可以看出正如修饰器的名字所言，修饰器就是对函数做了一个包装、修饰，但是并不改变原函数固有的功能。</p>
+</li>
+<li><p>类装饰器:</p>
+<ol>
+<li><p>正如前文所述装饰器也可以是类。相比于函数装饰器，类修饰器具有灵活度大、封装性等优点。使用类装饰器主要依靠类的<strong>call</strong>方法，当使用 @ 形式将装饰器附加到函数上时，就会调用此方法。</p>
+<pre><code>class times(object):
+    def __init__(self, *args):
+        pass
+
+    def __call__(self, func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            s_time = time.time()
+            self._func()
+            e_time = time.time()
+            print &apos;函数耗时%s&apos; % (e_time - s_time)
+        return wrapper
+</code></pre></li>
+<li><p>如果类装饰器有参数，则 <code>__init__</code>接收参数，而 <code>__call__</code> 接收 <code>func</code></p>
+</li>
+</ol>
+</li>
+<li><p>装饰器的调用顺序：</p>
+<pre><code>@a
+@b
+@c
+def func():...........
+</code></pre><p> 调用顺序是从里到外的，用上例而言就是      <code>func = a(b(c(func)))</code>        </p>
+</li>
+<li>装饰器的弊端及其消除：<br> 前文讲定义装饰器的时候没有讲到<code>@wraps(func)</code>的作用，可能会有很多疑惑。我们可以尝试将<code>@wraps(func)</code>注释掉然后查看被其装饰的函数的名称，我们会发现其名称将不会再是原函数的名称，这说明装饰器对原函数造成了影响，这是我们所不愿意见到的。所以我们使用python中的functool包中的一个装饰器来消除这个副作用。</li>
+</ol>
 
       
     </div>
@@ -521,7 +560,7 @@ def ...............
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#修饰器"><span class="nav-number">1.</span> <span class="nav-text">修饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例："><span class="nav-number">1.1.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引例："><span class="nav-number">1.2.</span> <span class="nav-text">引例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人理解："><span class="nav-number">1.3.</span> <span class="nav-text">个人理解：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰器"><span class="nav-number">1.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念："><span class="nav-number">1.1.</span> <span class="nav-text">概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例："><span class="nav-number">1.2.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引例："><span class="nav-number">1.3.</span> <span class="nav-text">引例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人理解："><span class="nav-number">1.4.</span> <span class="nav-text">个人理解：</span></a></li></ol></li></ol></div>
             
 
           </div>
