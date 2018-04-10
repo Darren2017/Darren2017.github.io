@@ -103,17 +103,17 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：#登陆限制装饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper">
+<meta name="description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：1234567891011#登陆限制装饰器def login_required(func):    @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 之器">
 <meta property="og:url" content="http://Darren2017.github.io/2018/04/10/python-之器/index.html">
 <meta property="og:site_name" content="Darren">
-<meta property="og:description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：#登陆限制装饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper">
+<meta property="og:description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：1234567891011#登陆限制装饰器def login_required(func):    @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T10:44:20.528Z">
+<meta property="og:updated_time" content="2018-04-10T12:18:28.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 之器">
-<meta name="twitter:description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：#登陆限制装饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper">
+<meta name="twitter:description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：1234567891011#登陆限制装饰器def login_required(func):    @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper">
 
 
 
@@ -333,49 +333,19 @@
         <h1 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h1><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h2><ul>
 <li>装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。  </li>
 </ul>
-<h2 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h2><pre><code>#登陆限制装饰器
-def login_required(func):
-@wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程
-def wrapper(*args, **kwargs):
-    if session.get(&apos;user_id&apos;):
-        return func(*args, **kwargs)
-    else:
-        return jsonify({
-            &quot;message&quot;:&quot;fail to signin&quot;
-        }), 401
-return wrapper
-</code></pre><h2 id="引例："><a href="#引例：" class="headerlink" title="引例："></a>引例：</h2><blockquote>
+<h2 id="代码示例："><a href="#代码示例：" class="headerlink" title="代码示例："></a>代码示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#登陆限制装饰器</span><br><span class="line">def login_required(func):</span><br><span class="line">    @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程</span><br><span class="line">    def wrapper(*args, **kwargs):</span><br><span class="line">        if session.get(&apos;user_id&apos;):</span><br><span class="line">            return func(*args, **kwargs)</span><br><span class="line">        else:</span><br><span class="line">            return jsonify(&#123;</span><br><span class="line">                &quot;message&quot;:&quot;fail to signin&quot;</span><br><span class="line">            &#125;), 401</span><br><span class="line">    return wrapper</span><br></pre></td></tr></table></figure>
+<h2 id="引例："><a href="#引例：" class="headerlink" title="引例："></a>引例：</h2><blockquote>
 <p>每个人都有的内裤主要功能是用来遮羞，但是到了冬天它没法为我们防风御寒，咋办？我们想到的一个办法就是把内裤改造一下，让它变得更厚更长，这样一来，它不仅有遮羞功能，还能提供保暖，不过有个问题，这个内裤被我们改造成了长裤后，虽然还有遮羞功能，但本质上它不再是一条真正的内裤了。于是聪明的人们发明长裤，在不影响内裤的前提下，直接把长裤套在了内裤外面，这样内裤还是内裤，有了长裤后宝宝再也不冷了。装饰器就像我们这里说的长裤，在不影响内裤作用的前提下，给我们的身子提供了保暖的功效。</p>
 </blockquote>
 <h2 id="个人理解："><a href="#个人理解：" class="headerlink" title="个人理解："></a>个人理解：</h2><p>装饰器本质上是一个函数或者类，只不过这个函数/类比较特殊。  </p>
 <ol>
 <li><p>例如当我们需要确定某一个函数运行所需的时间时，我们可以写一个函数来完成。</p>
-<pre><code>import time
-
-def time_func():
-    s_time = time.time()
-    func()                  #所需要确定运行时间的函数
-    e_time = time.time()
-    print &apos;运行时间：%s&apos; % (e_time - s_time)
-</code></pre><ul>
-<li>通过以上代码可以看出，我们改变了原有函数  func  的调用方式，当程序中有很多函数需要确定运行时间时，我们如果对所有函数都进行这样的改写不仅工作量是巨大的，而且改出的bug或许是……  </li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line"></span><br><span class="line">def time_func():</span><br><span class="line">    s_time = time.time()</span><br><span class="line">    func()                  #所需要确定运行时间的函数</span><br><span class="line">    e_time = time.time()</span><br><span class="line">    print &apos;运行时间：%s&apos; % (e_time - s_time)</span><br></pre></td></tr></table></figure>
+<p> 通过以上代码可以看出，我们改变了原有函数  func  的调用方式，当程序中有很多函数需要确定运行时间时，我们如果对所有函数都进行这样的改写不仅工作量是巨大的，而且改出的bug或许是……  </p>
 </li>
 <li><p>改用装饰器的方式我们可以写成：</p>
-<pre><code>def times(func):        #定义一个装饰器，可以保存在一个单独的文件中，使用时引入
-    @wraps(func)
-    def wrapper(*arg, **kwarg):
-        s_time = time.time()
-        func()
-        e_time = time.time()
-        print &apos;函数耗时%s&apos; % (e_time - s_time)
-    return wrapper
-
-@times          #定义函数时加上装饰器, =&gt;func = times(func)
-def func:...............
-</code></pre><ul>
-<li>可以看出正如装饰器的名字所言，装饰器就是对函数做了一个包装、修饰，但是并不改变原函数固有的功能。（python支持将函数作为参数传入另一个函数）</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def times(func):        #定义一个装饰器，可以保存在一个单独的文件中，使用时引入</span><br><span class="line">    @wraps(func)</span><br><span class="line">    def wrapper(*arg, **kwarg):</span><br><span class="line">        s_time = time.time()</span><br><span class="line">        func()</span><br><span class="line">        e_time = time.time()</span><br><span class="line">        print &apos;函数耗时%s&apos; % (e_time - s_time)</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line">@times          #定义函数时加上装饰器, =&gt;func = times(func)</span><br><span class="line">def func:...............</span><br></pre></td></tr></table></figure>
+<p> 可以看出正如装饰器的名字所言，装饰器就是对函数做了一个包装、修饰，但是并不改变原函数固有的功能。（python支持将函数作为参数传入另一个函数）</p>
 </li>
 <li>关于 *args **kwargs:<ol>
 <li>我们所要装饰的函数有很多是需要参数的，所以说我们可能会想到在wrapper()直接添加参数，但是如果函数所需要的参数个数是不确定的，那如果每次都修改所定义的装饰器，那么装饰器便失去了其普适性。所以引入了*args **kwargs支持接受动态参数。</li>
@@ -385,47 +355,41 @@ def func:...............
 <li><p>类装饰器:</p>
 <ol>
 <li><p>正如前文所述装饰器也可以是类。相比于函数装饰器，类修饰器具有灵活度大、封装性等优点。使用类装饰器主要依靠类的<strong>call</strong>方法，当使用 @ 形式将装饰器附加到函数上时，就会调用此方法。</p>
-<pre><code>class times(object):
-    def __init__(self, *args):
-        pass
-
-    def __call__(self, func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            s_time = time.time()
-            self._func()
-            e_time = time.time()
-            print &apos;函数耗时%s&apos; % (e_time - s_time)
-        return wrapper
-</code></pre></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class times(object):</span><br><span class="line">    def __init__(self, *args):</span><br><span class="line">        pass</span><br><span class="line"></span><br><span class="line">    def __call__(self, func):</span><br><span class="line">        @wraps(func)</span><br><span class="line">        def wrapper(*args, **kwargs):</span><br><span class="line">            s_time = time.time()</span><br><span class="line">            self._func()</span><br><span class="line">            e_time = time.time()</span><br><span class="line">            print &apos;函数耗时%s&apos; % (e_time - s_time)</span><br><span class="line">        return wrapper</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>如果类装饰器有参数，则 <code>__init__</code>接收参数，而 <code>__call__</code> 接收 <code>func</code></p>
 </li>
 </ol>
 </li>
 <li><p>装饰器的调用顺序：</p>
-<pre><code>@a
-@b
-@c
-def func():...........
-</code></pre><p> 调用顺序是从里到外的，用上例而言就是      <code>func = a(b(c(func)))</code>        </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@a</span><br><span class="line">@b</span><br><span class="line">@c</span><br><span class="line">def func():...........</span><br></pre></td></tr></table></figure>
+<p> 调用顺序是从里到外的，用上例而言就是      <code>func = a(b(c(func)))</code>        </p>
 </li>
 <li>装饰器的弊端及其消除：<br> 前文讲定义装饰器的时候没有讲到<code>@wraps(func)</code>的作用，可能会有很多疑惑。我们可以尝试将<code>@wraps(func)</code>注释掉然后查看被其装饰的函数的名称，我们会发现其名称将不会再是原函数的名称，这说明装饰器对原函数造成了影响，这是我们所不愿意见到的。所以我们使用python中的functool包中的一个装饰器来消除这个副作用。</li>
 </ol>
+<h2 id="装饰器route："><a href="#装饰器route：" class="headerlink" title="装饰器route："></a>装饰器route：</h2><ol>
+<li>route源码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def route(self,rule,**options):</span><br><span class="line"></span><br><span class="line">    def decorator(f):</span><br><span class="line">        endpoint = options.pop(&apos;endpoints&apos;,None)</span><br><span class="line">        self.add_url_rule(rule,endpoint,f,**options)</span><br><span class="line">        return f</span><br><span class="line">    return decorator</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h1 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h1><h2 id="init"><a href="#init" class="headerlink" title="__init__()"></a><code>__init__()</code></h2><ol>
 <li>这里的<code>__init__</code>方法是一个特殊的方法（init是单词初始化initialization的省略形式），在使用类创建对象之后被执行，用于给新创建的对象初始化属性用。<br> 例如我们要创建<code>person</code>类来表示人这个物种，那么<code>person</code>表示人类全体，而<code>person</code>的每一个实例表示一个人。当我们要创建一个实例的时候我们必然要为这个实例（这个人）赋予一些属性，而<code>__init__</code>就是用来为这个实例赋予属性的，在类被初始化时调用。</li>
-<li><p>代码示例：</p>
-<pre><code>#定义一个类
-class person:
-    def __init__(self, weight, height, age):
-        self.weight = weight
-        self.height = height
-        sefl.age =age
-
-#实例化这个类
-Tom = person(20, 30, 40)
-</code></pre></li>
+<li>代码示例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#定义一个类</span><br><span class="line">class person:</span><br><span class="line">    def __init__(self, weight, height, age):</span><br><span class="line">        self.weight = weight</span><br><span class="line">        self.height = height</span><br><span class="line">        sefl.age =age</span><br><span class="line"></span><br><span class="line">#实例化这个类</span><br><span class="line">Tom = person(20, 30, 40)</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h2 id="new"><a href="#new" class="headerlink" title="__new__()"></a><code>__new__()</code></h2>
+<h2 id="new"><a href="#new" class="headerlink" title="__new__()"></a><code>__new__()</code></h2><ol>
+<li>用于对象的创建，是一个静态方法，第一个参数是<code>cls</code> </li>
+<li><code>__new__</code>方法默认返回实例对象供<code>__init__</code>方法、实例方法使用。<br> PS:理解不深，不做过多解释，以免产生误导。</li>
+</ol>
+<h1 id="解构器"><a href="#解构器" class="headerlink" title="解构器"></a>解构器</h1><h2 id="概念：-1"><a href="#概念：-1" class="headerlink" title="概念："></a>概念：</h2><blockquote>
+<p>与构造器相对应有一个特殊的解构器（destructor）方法名为<code>__del__()</code>。然而，由于python具有垃圾对象回收机制（考引用计数），这个函数要直到该实例对象所有的引用都被清除掉后才会执行。python中的解构器是在实例释放前提供特殊处理功能的方法，它们通常没有被实现，因为实例很少被显式释放。——–摘自《python核心编程二》</p>
+</blockquote>
+<h2 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h2><ol>
+<li>调用<code>del x</code>不代表调用了<code>x.__del__()</code>,它仅仅是减少了x的引用计数</li>
+<li>如果有一个循环引用或者其他原因让一个实例的引用逗留不去，该对象的<code>__del__()</code>可能永远不会被执行</li>
+<li>除非你知道你在干什么否则不要去实现<code>__del()__</code></li>
+</ol>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>解构器这东西和我们这些小白没什么关系，还是不要用的好。</p>
+
       
     </div>
 
@@ -574,7 +538,7 @@ Tom = person(20, 30, 40)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰器"><span class="nav-number">1.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念："><span class="nav-number">1.1.</span> <span class="nav-text">概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例："><span class="nav-number">1.2.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引例："><span class="nav-number">1.3.</span> <span class="nav-text">引例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人理解："><span class="nav-number">1.4.</span> <span class="nav-text">个人理解：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造器"><span class="nav-number">2.</span> <span class="nav-text">构造器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#init"><span class="nav-number">2.1.</span> <span class="nav-text">__init__()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new"><span class="nav-number">2.2.</span> <span class="nav-text">__new__()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰器"><span class="nav-number">1.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念："><span class="nav-number">1.1.</span> <span class="nav-text">概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例："><span class="nav-number">1.2.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引例："><span class="nav-number">1.3.</span> <span class="nav-text">引例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人理解："><span class="nav-number">1.4.</span> <span class="nav-text">个人理解：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#装饰器route："><span class="nav-number">1.5.</span> <span class="nav-text">装饰器route：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造器"><span class="nav-number">2.</span> <span class="nav-text">构造器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#init"><span class="nav-number">2.1.</span> <span class="nav-text">__init__()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new"><span class="nav-number">2.2.</span> <span class="nav-text">__new__()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解构器"><span class="nav-number">3.</span> <span class="nav-text">解构器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念：-1"><span class="nav-number">3.1.</span> <span class="nav-text">概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项："><span class="nav-number">3.2.</span> <span class="nav-text">注意事项：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结："><span class="nav-number">3.3.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></div>
             
 
           </div>
