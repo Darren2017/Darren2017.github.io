@@ -333,15 +333,18 @@
           
             <h1 id="修饰器"><a href="#修饰器" class="headerlink" title="修饰器"></a>修饰器</h1><ol>
 <li><p>代码示例：</p>
-<p> def login_required(func):           #登录限制修饰器<br> @wraps(func)                        #wraps，可用作一个装饰器，简化调用update_wrapper的过程<br> def wrapper(*args, **kwargs):</p>
-<pre><code>if session.get(&apos;user_id&apos;):
-    return func(*args, **kwargs)
-else:
-    return jsonify({
-        &quot;message&quot;:&quot;fail to signin&quot;
-    }), 401
-</code></pre><p> return wrapper</p>
-</li>
+<pre><code>#登陆限制修饰器
+def login_required(func):
+@wraps(func)-----------------#wraps，可用作一个装饰器，简化调用update_wrapper的过程
+def wrapper(*args, **kwargs):
+    if session.get(&apos;user_id&apos;):
+        return func(*args, **kwargs)
+    else:
+        return jsonify({
+            &quot;message&quot;:&quot;fail to signin&quot;
+        }), 401
+return wrapper
+</code></pre></li>
 </ol>
 
           

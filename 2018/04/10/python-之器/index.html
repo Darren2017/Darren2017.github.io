@@ -103,17 +103,17 @@
   <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="修饰器 代码示例：  def login_required(func):           #登录限制修饰器 @wraps(func)                        #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs): if session.get(&amp;apos;user_id&amp;apos;):">
+<meta name="description" content="修饰器 代码示例： #登陆限制修饰器 def login_required(func): @wraps(func)-----------------#wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return fu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python 之器">
 <meta property="og:url" content="http://Darren2017.github.io/2018/04/10/python-之器/index.html">
 <meta property="og:site_name" content="Darren">
-<meta property="og:description" content="修饰器 代码示例：  def login_required(func):           #登录限制修饰器 @wraps(func)                        #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs): if session.get(&amp;apos;user_id&amp;apos;):">
+<meta property="og:description" content="修饰器 代码示例： #登陆限制修饰器 def login_required(func): @wraps(func)-----------------#wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return fu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T00:42:31.000Z">
+<meta property="og:updated_time" content="2018-04-10T00:50:33.719Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 之器">
-<meta name="twitter:description" content="修饰器 代码示例：  def login_required(func):           #登录限制修饰器 @wraps(func)                        #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs): if session.get(&amp;apos;user_id&amp;apos;):">
+<meta name="twitter:description" content="修饰器 代码示例： #登陆限制修饰器 def login_required(func): @wraps(func)-----------------#wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper(*args, **kwargs):     if session.get(&amp;apos;user_id&amp;apos;):         return fu">
 
 
 
@@ -332,15 +332,18 @@
       
         <h1 id="修饰器"><a href="#修饰器" class="headerlink" title="修饰器"></a>修饰器</h1><ol>
 <li><p>代码示例：</p>
-<p> def login_required(func):           #登录限制修饰器<br> @wraps(func)                        #wraps，可用作一个装饰器，简化调用update_wrapper的过程<br> def wrapper(*args, **kwargs):</p>
-<pre><code>if session.get(&apos;user_id&apos;):
-    return func(*args, **kwargs)
-else:
-    return jsonify({
-        &quot;message&quot;:&quot;fail to signin&quot;
-    }), 401
-</code></pre><p> return wrapper</p>
-</li>
+<pre><code>#登陆限制修饰器
+def login_required(func):
+@wraps(func)-----------------#wraps，可用作一个装饰器，简化调用update_wrapper的过程
+def wrapper(*args, **kwargs):
+    if session.get(&apos;user_id&apos;):
+        return func(*args, **kwargs)
+    else:
+        return jsonify({
+            &quot;message&quot;:&quot;fail to signin&quot;
+        }), 401
+return wrapper
+</code></pre></li>
 </ol>
 
       
