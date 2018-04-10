@@ -110,7 +110,7 @@
 <meta property="og:site_name" content="Darren">
 <meta property="og:description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：#登陆限制装饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-10T07:32:40.998Z">
+<meta property="og:updated_time" content="2018-04-10T10:44:20.528Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 之器">
 <meta name="twitter:description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：#登陆限制装饰器 def login_required(func): @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper的过程 def wrapper">
@@ -411,7 +411,21 @@ def func():...........
 </li>
 <li>装饰器的弊端及其消除：<br> 前文讲定义装饰器的时候没有讲到<code>@wraps(func)</code>的作用，可能会有很多疑惑。我们可以尝试将<code>@wraps(func)</code>注释掉然后查看被其装饰的函数的名称，我们会发现其名称将不会再是原函数的名称，这说明装饰器对原函数造成了影响，这是我们所不愿意见到的。所以我们使用python中的functool包中的一个装饰器来消除这个副作用。</li>
 </ol>
+<h1 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h1><h2 id="init"><a href="#init" class="headerlink" title="__init__()"></a><code>__init__()</code></h2><ol>
+<li>这里的<code>__init__</code>方法是一个特殊的方法（init是单词初始化initialization的省略形式），在使用类创建对象之后被执行，用于给新创建的对象初始化属性用。<br> 例如我们要创建<code>person</code>类来表示人这个物种，那么<code>person</code>表示人类全体，而<code>person</code>的每一个实例表示一个人。当我们要创建一个实例的时候我们必然要为这个实例（这个人）赋予一些属性，而<code>__init__</code>就是用来为这个实例赋予属性的，在类被初始化时调用。</li>
+<li><p>代码示例：</p>
+<pre><code>#定义一个类
+class person:
+    def __init__(self, weight, height, age):
+        self.weight = weight
+        self.height = height
+        sefl.age =age
 
+#实例化这个类
+Tom = person(20, 30, 40)
+</code></pre></li>
+</ol>
+<h2 id="new"><a href="#new" class="headerlink" title="__new__()"></a><code>__new__()</code></h2>
       
     </div>
 
@@ -560,7 +574,7 @@ def func():...........
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰器"><span class="nav-number">1.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念："><span class="nav-number">1.1.</span> <span class="nav-text">概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例："><span class="nav-number">1.2.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引例："><span class="nav-number">1.3.</span> <span class="nav-text">引例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人理解："><span class="nav-number">1.4.</span> <span class="nav-text">个人理解：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#装饰器"><span class="nav-number">1.</span> <span class="nav-text">装饰器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念："><span class="nav-number">1.1.</span> <span class="nav-text">概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码示例："><span class="nav-number">1.2.</span> <span class="nav-text">代码示例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引例："><span class="nav-number">1.3.</span> <span class="nav-text">引例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人理解："><span class="nav-number">1.4.</span> <span class="nav-text">个人理解：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#构造器"><span class="nav-number">2.</span> <span class="nav-text">构造器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#init"><span class="nav-number">2.1.</span> <span class="nav-text">__init__()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#new"><span class="nav-number">2.2.</span> <span class="nav-text">__new__()</span></a></li></ol></li></ol></div>
             
 
           </div>
