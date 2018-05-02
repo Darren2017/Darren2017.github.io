@@ -100,16 +100,17 @@
 
 
   
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="CSAPP,binary," />
 
 
 <meta name="description" content="原料： Writeup Handout.tar    仓库: 博主代码  题目解析：bitAnd要求：12345bitAnd - x&amp;amp;y using only ~ and |   Example: bitAnd(6, 5) = 4 Legal ops: ~ |   Max ops: 8 Rating: 1 函数：123int bitAnd(int x, int y) &amp;#123;    r">
+<meta name="keywords" content="CSAPP,binary">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Datalab_Share">
 <meta property="og:url" content="http://Darren2017.github.io/2018/04/27/datalab-share/index.html">
 <meta property="og:site_name" content="Darren">
 <meta property="og:description" content="原料： Writeup Handout.tar    仓库: 博主代码  题目解析：bitAnd要求：12345bitAnd - x&amp;amp;y using only ~ and |   Example: bitAnd(6, 5) = 4 Legal ops: ~ |   Max ops: 8 Rating: 1 函数：123int bitAnd(int x, int y) &amp;#123;    r">
-<meta property="og:updated_time" content="2018-04-29T10:30:56.273Z">
+<meta property="og:updated_time" content="2018-05-02T16:47:15.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Datalab_Share">
 <meta name="twitter:description" content="原料： Writeup Handout.tar    仓库: 博主代码  题目解析：bitAnd要求：12345bitAnd - x&amp;amp;y using only ~ and |   Example: bitAnd(6, 5) = 4 Legal ops: ~ |   Max ops: 8 Rating: 1 函数：123int bitAnd(int x, int y) &amp;#123;    r">
@@ -377,7 +378,18 @@
 <h3 id="解析：-6"><a href="#解析：-6" class="headerlink" title="解析："></a>解析：</h3><p>求负数比较简单，根据补码的性质，取反加一即可。</p>
 <h2 id="isPositive"><a href="#isPositive" class="headerlink" title="isPositive"></a>isPositive</h2><h3 id="要求：-7"><a href="#要求：-7" class="headerlink" title="要求："></a>要求：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">isPositive - return 1 if x &gt; 0, return 0 otherwise </span><br><span class="line">Example: isPositive(-1) = 0.</span><br><span class="line">Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</span><br><span class="line">Max ops: 8</span><br><span class="line">Rating: 3</span><br></pre></td></tr></table></figure>
 <h3 id="函数：-6"><a href="#函数：-6" class="headerlink" title="函数："></a>函数：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isPositive</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (~(x &gt;&gt; <span class="number">31</span>) &amp; <span class="number">0x1</span>) ^ !x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="解析：-7"><a href="#解析：-7" class="headerlink" title="解析："></a>解析：</h3><p>右移31位取反后与1进行按位与运算，负数得到0，正数和0得到1，此时0不符合要求，观察发现非零的非为0，0为1，故可以将所求数与x的非进行按位异或运算。</p>
+<h3 id="解析：-7"><a href="#解析：-7" class="headerlink" title="解析："></a>解析：</h3><p>右移31位取反后与1进行按位与运算，负数得到0，正数和0得到1，此时0不符合要求，观察发现非零的非为0，0为1，故可以将所求数与x的非进行按位异或运算。  </p>
+<h2 id="isLessOrEqual"><a href="#isLessOrEqual" class="headerlink" title="isLessOrEqual"></a>isLessOrEqual</h2><h3 id="要求：-8"><a href="#要求：-8" class="headerlink" title="要求："></a>要求：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">isLessOrEqual - if x &lt;= y  then return 1, else return 0 </span><br><span class="line">Example: isLessOrEqual(4,5) = 1.</span><br><span class="line">Legal ops: ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;</span><br><span class="line">Max ops: 24</span><br><span class="line">Rating: 3</span><br></pre></td></tr></table></figure>
+<h3 id="函数：-7"><a href="#函数：-7" class="headerlink" title="函数："></a>函数：</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isLessOrEqual</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> handle = y + (~x + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">int</span> result = ~(handle &gt;&gt; <span class="number">31</span>) &amp; <span class="number">0x1</span>;</span><br><span class="line">  <span class="keyword">int</span> i = x &gt;&gt; <span class="number">31</span> &amp; <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> j = y &gt;&gt; <span class="number">31</span> &amp; <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> (result &amp; !(i ^ j)) | (!!(i - j + <span class="number">1</span>) &amp; (i ^ j));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="解析：-8"><a href="#解析：-8" class="headerlink" title="解析："></a>解析：</h3><ol>
+<li>最初博主的想法是用<code>y - x</code>判断所得结果的正负，但是出现的问题是会发生溢出，例如y为最大的整数，x为最小的负数，故此方法无法得出结果，但是这个方法给我们提供了一个分类讨论的思路。</li>
+<li>由最初的方法我们发现如何没有发生溢出那么结果是正确的否则是未知的，那么什么情况下发生了溢出什么情况下又没有呢？ <ul>
+<li>2-1 当 x y 同号时不会发生溢出（包含 x y 为零的情况），因此我们用 i j 取得 x y 的符号位并判断是否相同，相同时则直接利用resulte的结果。</li>
+<li>2-2 当 x y 异号时则返回的resulte是不准确的，故利用<code>!(i ^ j)</code>的返回值为零，屏蔽它对结果的影响。然后利用此时 x y 符号为的关系计算结果。应注意的是在第二种情况是应 &amp; 一个<code>(i ^ j)</code>避免前一种情况可信但是返回值为零时，或运算得到第二种情况的结果。</li>
+</ul>
+</li>
+<li>关于这道题的看法：减法运算出现溢出的情况后博主卡了好久，愣是没有想到分类讨论，所以在此劝告大家一定要放开思想，不要被自己局限到。datalab每道题的解法都有很多很多种，你总能找到一种的。</li>
+</ol>
 
       
     </div>
@@ -400,7 +412,7 @@
   <p><span>本文标题:</span><a href="/2018/04/27/datalab-share/">Datalab_Share</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Darren 的个人博客">Darren</a></p>
   <p><span>发布时间:</span>2018年04月27日 - 23:04</p>
-  <p><span>最后更新:</span>2018年04月29日 - 18:04</p>
+  <p><span>最后更新:</span>2018年05月03日 - 00:05</p>
   <p><span>原始链接:</span><a href="/2018/04/27/datalab-share/" title="Datalab_Share">http://Darren2017.github.io/2018/04/27/datalab-share/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Darren2017.github.io/2018/04/27/datalab-share/"  aria-label="复制成功！"></i></span>
   </p>
@@ -431,6 +443,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSAPP/" rel="tag"># CSAPP</a>
+          
+            <a href="/tags/binary/" rel="tag"># binary</a>
+          
+        </div>
       
 
       
@@ -532,6 +552,29 @@
               
 
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
             </nav>
           
 
@@ -563,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原料："><span class="nav-number">1.</span> <span class="nav-text">原料：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#仓库"><span class="nav-number">2.</span> <span class="nav-text">仓库:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目解析："><span class="nav-number">3.</span> <span class="nav-text">题目解析：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bitAnd"><span class="nav-number">3.1.</span> <span class="nav-text">bitAnd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求："><span class="nav-number">3.1.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数："><span class="nav-number">3.1.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析："><span class="nav-number">3.1.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getByte"><span class="nav-number">3.2.</span> <span class="nav-text">getByte</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析"><span class="nav-number">3.2.3.</span> <span class="nav-text">解析:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logicalShift"><span class="nav-number">3.3.</span> <span class="nav-text">logicalShift</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求"><span class="nav-number">3.3.1.</span> <span class="nav-text">要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">3.3.2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-1"><span class="nav-number">3.3.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bitCount"><span class="nav-number">3.4.</span> <span class="nav-text">bitCount</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-2"><span class="nav-number">3.4.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-2"><span class="nav-number">3.4.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-2"><span class="nav-number">3.4.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bang"><span class="nav-number">3.5.</span> <span class="nav-text">bang</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-3"><span class="nav-number">3.5.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-3"><span class="nav-number">3.5.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-3"><span class="nav-number">3.5.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmin"><span class="nav-number">3.6.</span> <span class="nav-text">tmin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-4"><span class="nav-number">3.6.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-4"><span class="nav-number">3.6.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-4"><span class="nav-number">3.6.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fitsBits"><span class="nav-number">3.7.</span> <span class="nav-text">fitsBits</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-5"><span class="nav-number">3.7.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-5"><span class="nav-number">3.7.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-5"><span class="nav-number">3.7.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#divpwr2"><span class="nav-number">3.8.</span> <span class="nav-text">divpwr2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求-1"><span class="nav-number">3.8.1.</span> <span class="nav-text">要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数-1"><span class="nav-number">3.8.2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析-1"><span class="nav-number">3.8.3.</span> <span class="nav-text">解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#negate"><span class="nav-number">3.9.</span> <span class="nav-text">negate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-6"><span class="nav-number">3.9.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数-2"><span class="nav-number">3.9.2.</span> <span class="nav-text">函数:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-6"><span class="nav-number">3.9.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#isPositive"><span class="nav-number">3.10.</span> <span class="nav-text">isPositive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-7"><span class="nav-number">3.10.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-6"><span class="nav-number">3.10.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-7"><span class="nav-number">3.10.3.</span> <span class="nav-text">解析：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原料："><span class="nav-number">1.</span> <span class="nav-text">原料：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#仓库"><span class="nav-number">2.</span> <span class="nav-text">仓库:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目解析："><span class="nav-number">3.</span> <span class="nav-text">题目解析：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bitAnd"><span class="nav-number">3.1.</span> <span class="nav-text">bitAnd</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求："><span class="nav-number">3.1.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数："><span class="nav-number">3.1.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析："><span class="nav-number">3.1.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getByte"><span class="nav-number">3.2.</span> <span class="nav-text">getByte</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析"><span class="nav-number">3.2.3.</span> <span class="nav-text">解析:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logicalShift"><span class="nav-number">3.3.</span> <span class="nav-text">logicalShift</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求"><span class="nav-number">3.3.1.</span> <span class="nav-text">要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">3.3.2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-1"><span class="nav-number">3.3.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bitCount"><span class="nav-number">3.4.</span> <span class="nav-text">bitCount</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-2"><span class="nav-number">3.4.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-2"><span class="nav-number">3.4.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-2"><span class="nav-number">3.4.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bang"><span class="nav-number">3.5.</span> <span class="nav-text">bang</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-3"><span class="nav-number">3.5.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-3"><span class="nav-number">3.5.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-3"><span class="nav-number">3.5.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmin"><span class="nav-number">3.6.</span> <span class="nav-text">tmin</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-4"><span class="nav-number">3.6.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-4"><span class="nav-number">3.6.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-4"><span class="nav-number">3.6.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fitsBits"><span class="nav-number">3.7.</span> <span class="nav-text">fitsBits</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-5"><span class="nav-number">3.7.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-5"><span class="nav-number">3.7.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-5"><span class="nav-number">3.7.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#divpwr2"><span class="nav-number">3.8.</span> <span class="nav-text">divpwr2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求-1"><span class="nav-number">3.8.1.</span> <span class="nav-text">要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数-1"><span class="nav-number">3.8.2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析-1"><span class="nav-number">3.8.3.</span> <span class="nav-text">解析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#negate"><span class="nav-number">3.9.</span> <span class="nav-text">negate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-6"><span class="nav-number">3.9.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数-2"><span class="nav-number">3.9.2.</span> <span class="nav-text">函数:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-6"><span class="nav-number">3.9.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#isPositive"><span class="nav-number">3.10.</span> <span class="nav-text">isPositive</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-7"><span class="nav-number">3.10.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-6"><span class="nav-number">3.10.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-7"><span class="nav-number">3.10.3.</span> <span class="nav-text">解析：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#isLessOrEqual"><span class="nav-number">3.11.</span> <span class="nav-text">isLessOrEqual</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求：-8"><span class="nav-number">3.11.1.</span> <span class="nav-text">要求：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数：-7"><span class="nav-number">3.11.2.</span> <span class="nav-text">函数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析：-8"><span class="nav-number">3.11.3.</span> <span class="nav-text">解析：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -611,7 +654,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共3.1k字</span>
+  <span class="post-count">博客全站共3.6k字</span>
 </div>
 
         
