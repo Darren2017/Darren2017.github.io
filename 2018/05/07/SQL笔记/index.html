@@ -110,7 +110,7 @@
 <meta property="og:url" content="http://Darren2017.github.io/2018/05/07/SQL笔记/index.html">
 <meta property="og:site_name" content="Darren">
 <meta property="og:description" content="基础知识数据库与数据库软件 数据库：保存有组织的数据的容器（通常是一个文件或一组文件） 数据库软件：确切的说，数据库软件应称为数据库管理系统（DBMS）。数据库是通过DBMS创建和操纵的容器。    SQL是什么 SQL（Structured Query Language）中文名结构化查询语句，是一种专门用来与数据库沟通的语言。 SQL不是某个特定DBMS的语言，几乎所有重要的DBMS都支持SQL">
-<meta property="og:updated_time" content="2018-05-12T16:06:17.250Z">
+<meta property="og:updated_time" content="2018-05-12T16:48:56.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL笔记">
 <meta name="twitter:description" content="基础知识数据库与数据库软件 数据库：保存有组织的数据的容器（通常是一个文件或一组文件） 数据库软件：确切的说，数据库软件应称为数据库管理系统（DBMS）。数据库是通过DBMS创建和操纵的容器。    SQL是什么 SQL（Structured Query Language）中文名结构化查询语句，是一种专门用来与数据库沟通的语言。 SQL不是某个特定DBMS的语言，几乎所有重要的DBMS都支持SQL">
@@ -459,18 +459,104 @@
 <h5 id="与OR："><a href="#与OR：" class="headerlink" title="与OR："></a>与<code>OR</code>：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2</span><br><span class="line"><span class="keyword">FROM</span> tabel1</span><br><span class="line"><span class="keyword">WHERE</span> value1 = value2 <span class="keyword">OR</span> value1 = value3;</span><br></pre></td></tr></table></figure>
 <p>PS:   当多个<code>AND</code>与<code>OR</code>连用时注意用括号分割，避免逻辑性错误，避免歧义。</p>
 <h5 id="与IN："><a href="#与IN：" class="headerlink" title="与IN："></a>与<code>IN</code>：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2</span><br><span class="line"><span class="keyword">FROM</span> tabel1</span><br><span class="line"><span class="keyword">WHERE</span> value1 <span class="keyword">IN</span> (value2,value3）</span><br></pre></td></tr></table></figure>
-<pre><code>可以看出``IN``与``OR``相当，但是当合法选项很多时，前者的语法更清楚，更直观。
-</code></pre><h5 id="与NOT"><a href="#与NOT" class="headerlink" title="与NOT:"></a>与<code>NOT</code>:</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2</span><br><span class="line"><span class="keyword">FROM</span> tabel1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> value1 <span class="keyword">IN</span> (value2,value3）</span><br></pre></td></tr></table></figure>
-<pre><code>其中``NOT``只否定其后一个语句，而不是全部语句。
-</code></pre><h4 id="通配符过滤–LIKE操作符"><a href="#通配符过滤–LIKE操作符" class="headerlink" title="通配符过滤–LIKE操作符:"></a>通配符过滤–<code>LIKE</code>操作符:</h4><h5 id="通配符："><a href="#通配符：" class="headerlink" title="%通配符："></a><code>%</code>通配符：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2</span><br><span class="line"><span class="keyword">FROM</span> tabel1</span><br><span class="line"><span class="keyword">WHERE</span> value1 = <span class="string">'value2%'</span>;</span><br></pre></td></tr></table></figure>
-<pre><code>``%``表示任何字符出现任意次数，上例表示找出所有以 value2起头的单词，其中``%``可以使用任意次数。   
-应注意的是若指定``value1 = &apos;value2%y&apos;``， 即以``value2``起头，以`y`结尾，但是许多DBMS用空格填补字段，则无返回，应该为``value1 = &apos;value2%y%&apos;``
-</code></pre><h5 id="通配符：-1"><a href="#通配符：-1" class="headerlink" title="_通配符："></a><code>_</code>通配符：</h5><pre><code>与`%`类似，但是`_`只匹配一个字符。 
-</code></pre><h5 id="通配符：-2"><a href="#通配符：-2" class="headerlink" title="[]通配符："></a><code>[]</code>通配符：</h5><pre><code>``[]``用来指定一个字符集，它必须匹配指定位置（通配符的位置）的一个字符，``[JM]``表示此处的字符可以为 J 或 M。应注意的是``[]``通配符只有Access和SQL Server支持。
-</code></pre><h5 id="Summary："><a href="#Summary：" class="headerlink" title="Summary："></a>Summary：</h5><pre><code>+ 使用通配符导致搜索时间变长
-+ 不要过度使用通配符，若可以达到相同目的，应使用其他操作符
-+ 使用通配符时不要把它放在开始的位置，应尽量往后放。
-</code></pre>
+<p>可以看出<code>IN</code>与<code>OR</code>相当，但是当合法选项很多时，前者的语法更清楚，更直观。</p>
+<h5 id="与NOT"><a href="#与NOT" class="headerlink" title="与NOT:"></a>与<code>NOT</code>:</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2</span><br><span class="line"><span class="keyword">FROM</span> tabel1</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> value1 <span class="keyword">IN</span> (value2,value3）</span><br></pre></td></tr></table></figure>
+<p>其中<code>NOT</code>只否定其后一个语句，而不是全部语句。</p>
+<h4 id="通配符过滤–LIKE操作符"><a href="#通配符过滤–LIKE操作符" class="headerlink" title="通配符过滤–LIKE操作符:"></a>通配符过滤–<code>LIKE</code>操作符:</h4><h5 id="通配符："><a href="#通配符：" class="headerlink" title="%通配符："></a><code>%</code>通配符：</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column1, column2</span><br><span class="line"><span class="keyword">FROM</span> tabel1</span><br><span class="line"><span class="keyword">WHERE</span> value1 = <span class="string">'value2%'</span>;</span><br></pre></td></tr></table></figure>
+<p><code>%</code>表示任何字符出现任意次数，上例表示找出所有以 value2起头的单词，其中<code>%</code>可以使用任意次数。<br>应注意的是若指定<code>value1 = &#39;value2%y&#39;</code>， 即以<code>value2</code>起头，以<code>y</code>结尾，但是许多DBMS用空格填补字段，则无返回，应该为<code>value1 = &#39;value2%y%&#39;</code></p>
+<h5 id="通配符：-1"><a href="#通配符：-1" class="headerlink" title="_通配符："></a><code>_</code>通配符：</h5><p>与<code>%</code>类似，但是<code>_</code>只匹配一个字符。 </p>
+<h5 id="通配符：-2"><a href="#通配符：-2" class="headerlink" title="[]通配符："></a><code>[]</code>通配符：</h5><p><code>[]</code>用来指定一个字符集，它必须匹配指定位置（通配符的位置）的一个字符，<code>[JM]</code>表示此处的字符可以为 J 或 M。应注意的是<code>[]</code>通配符只有Access和SQL Server支持。</p>
+<h5 id="Summary："><a href="#Summary：" class="headerlink" title="Summary："></a>Summary：</h5><ul>
+<li>使用通配符导致搜索时间变长</li>
+<li>不要过度使用通配符，若可以达到相同目的，应使用其他操作符</li>
+<li>使用通配符时不要把它放在开始的位置，应尽量往后放。</li>
+</ul>
+<h2 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h2><h3 id="拼接字段"><a href="#拼接字段" class="headerlink" title="拼接字段"></a>拼接字段</h3><p>MySQL中使用<code>Concat</code>函数创建拼接字段，使用<code>AS</code>为新的字段创建一个名字， 其中<code>AS</code>是可选的，但是最好使用。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">Concat</span>(column1, <span class="string">'('</span>, column2, <span class="string">')'</span>) </span><br><span class="line"><span class="keyword">FROM</span> table1</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> column2;</span><br></pre></td></tr></table></figure>
+<h3 id="算术计算"><a href="#算术计算" class="headerlink" title="算术计算"></a>算术计算</h3><p><strong>可用操作符：</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">操作符</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:center">加</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">减</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:center">乘</td>
+</tr>
+<tr>
+<td style="text-align:center">/</td>
+<td style="text-align:center">除</td>
+</tr>
+</tbody>
+</table>
+<h2 id="函数处理"><a href="#函数处理" class="headerlink" title="函数处理"></a>函数处理</h2><p><strong>常用函数</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SUBSTRING()</td>
+<td style="text-align:center">提取字符串的组成部分</td>
+</tr>
+<tr>
+<td style="text-align:center">CONCERT()</td>
+<td style="text-align:center">数据类型转换</td>
+</tr>
+<tr>
+<td style="text-align:center">CURDATE()</td>
+<td style="text-align:center">提取当前日期</td>
+</tr>
+<tr>
+<td style="text-align:center">LEFT()</td>
+<td style="text-align:center">返回字符串左边的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">LENGTH()</td>
+<td style="text-align:center">返回字符串的长度</td>
+</tr>
+<tr>
+<td style="text-align:center">LOWER()</td>
+<td style="text-align:center">将字符串转换为小写</td>
+</tr>
+<tr>
+<td style="text-align:center">LTRIM()</td>
+<td style="text-align:center">去掉字符串左边的空格</td>
+</tr>
+<tr>
+<td style="text-align:center">RIGHT()</td>
+<td style="text-align:center">返回字符串右边的字符</td>
+</tr>
+<tr>
+<td style="text-align:center">RTRIM()</td>
+<td style="text-align:center">去掉字符串右边的空格</td>
+</tr>
+<tr>
+<td style="text-align:center">SOUNDEX()</td>
+<td style="text-align:center">返回字符串的SOUNDEX的值（可以用发音来进行相似性检测）</td>
+</tr>
+<tr>
+<td style="text-align:center">UPPER()</td>
+<td style="text-align:center">将字符串转换为大写</td>
+</tr>
+</tbody>
+</table>
+<p><strong>常用数值处理函数：</strong>    虽然该类型函数使用较少，但是在主要的DBMS中一致性、统一性最高，故而此处不做列举。</p>
+
       
     </div>
 
@@ -680,7 +766,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库与数据库软件"><span class="nav-number">1.1.</span> <span class="nav-text">数据库与数据库软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL是什么"><span class="nav-number">1.2.</span> <span class="nav-text">SQL是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表"><span class="nav-number">1.3.</span> <span class="nav-text">表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主键"><span class="nav-number">1.4.</span> <span class="nav-text">主键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检索篇"><span class="nav-number">2.</span> <span class="nav-text">检索篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通检索"><span class="nav-number">2.1.</span> <span class="nav-text">普通检索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础语句"><span class="nav-number">2.1.1.</span> <span class="nav-text">基础语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展选项"><span class="nav-number">2.1.2.</span> <span class="nav-text">扩展选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检索"><span class="nav-number">2.2.</span> <span class="nav-text">检索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ORDER-BY"><span class="nav-number">2.2.1.</span> <span class="nav-text">ORDER BY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WHERE"><span class="nav-number">2.2.2.</span> <span class="nav-text">WHERE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级过滤"><span class="nav-number">2.2.3.</span> <span class="nav-text">高级过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WHERE扩展"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">WHERE扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#与AND："><span class="nav-number">2.2.3.1.1.</span> <span class="nav-text">与AND：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与OR："><span class="nav-number">2.2.3.1.2.</span> <span class="nav-text">与OR：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与IN："><span class="nav-number">2.2.3.1.3.</span> <span class="nav-text">与IN：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与NOT"><span class="nav-number">2.2.3.1.4.</span> <span class="nav-text">与NOT:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通配符过滤–LIKE操作符"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">通配符过滤–LIKE操作符:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通配符："><span class="nav-number">2.2.3.2.1.</span> <span class="nav-text">%通配符：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通配符：-1"><span class="nav-number">2.2.3.2.2.</span> <span class="nav-text">_通配符：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通配符：-2"><span class="nav-number">2.2.3.2.3.</span> <span class="nav-text">[]通配符：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Summary："><span class="nav-number">2.2.3.2.4.</span> <span class="nav-text">Summary：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库与数据库软件"><span class="nav-number">1.1.</span> <span class="nav-text">数据库与数据库软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL是什么"><span class="nav-number">1.2.</span> <span class="nav-text">SQL是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表"><span class="nav-number">1.3.</span> <span class="nav-text">表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主键"><span class="nav-number">1.4.</span> <span class="nav-text">主键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检索篇"><span class="nav-number">2.</span> <span class="nav-text">检索篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#普通检索"><span class="nav-number">2.1.</span> <span class="nav-text">普通检索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础语句"><span class="nav-number">2.1.1.</span> <span class="nav-text">基础语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展选项"><span class="nav-number">2.1.2.</span> <span class="nav-text">扩展选项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检索"><span class="nav-number">2.2.</span> <span class="nav-text">检索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ORDER-BY"><span class="nav-number">2.2.1.</span> <span class="nav-text">ORDER BY</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WHERE"><span class="nav-number">2.2.2.</span> <span class="nav-text">WHERE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级过滤"><span class="nav-number">2.2.3.</span> <span class="nav-text">高级过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#WHERE扩展"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">WHERE扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#与AND："><span class="nav-number">2.2.3.1.1.</span> <span class="nav-text">与AND：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与OR："><span class="nav-number">2.2.3.1.2.</span> <span class="nav-text">与OR：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与IN："><span class="nav-number">2.2.3.1.3.</span> <span class="nav-text">与IN：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与NOT"><span class="nav-number">2.2.3.1.4.</span> <span class="nav-text">与NOT:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通配符过滤–LIKE操作符"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">通配符过滤–LIKE操作符:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通配符："><span class="nav-number">2.2.3.2.1.</span> <span class="nav-text">%通配符：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通配符：-1"><span class="nav-number">2.2.3.2.2.</span> <span class="nav-text">_通配符：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通配符：-2"><span class="nav-number">2.2.3.2.3.</span> <span class="nav-text">[]通配符：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Summary："><span class="nav-number">2.2.3.2.4.</span> <span class="nav-text">Summary：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建计算字段"><span class="nav-number">2.3.</span> <span class="nav-text">创建计算字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拼接字段"><span class="nav-number">2.3.1.</span> <span class="nav-text">拼接字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算术计算"><span class="nav-number">2.3.2.</span> <span class="nav-text">算术计算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数处理"><span class="nav-number">2.4.</span> <span class="nav-text">函数处理</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -728,7 +814,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共6.2k字</span>
+  <span class="post-count">博客全站共6.5k字</span>
 </div>
 
         
