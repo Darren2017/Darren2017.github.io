@@ -100,27 +100,30 @@
 
 
   
-  <meta name="keywords" content="格式化输入," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
-<meta name="description" content="格式化输入scanf以空白字符为定界符，但如果输入的字符串是以其它字符为定界符的，如果在读取之后再进行字符串处理将会很麻烦，所以我们可以用到一个很有用的东西，[]就是专门处理这个问题的转换说明符。[]转换说明符可以通过两种方式产生结果字符集，如果第一个[字符右边没有抑扬符^，那么处于[]之间的字符就是结果字符集，不在其中的可输入字符都作为定界符；如果左边[符号紧靠一个抑扬符^，那么意义相反，^和]">
-<meta name="keywords" content="格式化输入">
+<meta name="description" content="写在开始之前 首先欢迎大家参加木犀星计划，希望你们可以顺利完成星计划成为木犀实习生，加入我们木犀大家庭。 此博客主要介绍一些常用的Linux基础命令，命令不是很复杂，但是很有趣，也需要大家去记忆，希望你在看这篇博的的时候身边有一台可以使用的Linux或macOS电脑。这样可以跟着教程做练习，提高学习效率。 如果你是Ubuntu系统可以先使用系统自带的bash，日后可以去探索其他的shell。如果你">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C语言格式化读取">
-<meta property="og:url" content="http://Darren2017.github.io/2018/05/25/C语言格式化读取/index.html">
+<meta property="og:title" content="木犀星计划--shell入门">
+<meta property="og:url" content="http://Darren2017.github.io/2018/07/23/木犀星计划-shell入门/index.html">
 <meta property="og:site_name" content="Darren">
-<meta property="og:description" content="格式化输入scanf以空白字符为定界符，但如果输入的字符串是以其它字符为定界符的，如果在读取之后再进行字符串处理将会很麻烦，所以我们可以用到一个很有用的东西，[]就是专门处理这个问题的转换说明符。[]转换说明符可以通过两种方式产生结果字符集，如果第一个[字符右边没有抑扬符^，那么处于[]之间的字符就是结果字符集，不在其中的可输入字符都作为定界符；如果左边[符号紧靠一个抑扬符^，那么意义相反，^和]">
-<meta property="og:updated_time" content="2018-05-25T03:26:01.303Z">
+<meta property="og:description" content="写在开始之前 首先欢迎大家参加木犀星计划，希望你们可以顺利完成星计划成为木犀实习生，加入我们木犀大家庭。 此博客主要介绍一些常用的Linux基础命令，命令不是很复杂，但是很有趣，也需要大家去记忆，希望你在看这篇博的的时候身边有一台可以使用的Linux或macOS电脑。这样可以跟着教程做练习，提高学习效率。 如果你是Ubuntu系统可以先使用系统自带的bash，日后可以去探索其他的shell。如果你">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V13eIAYa44toDv/pt6nxY4NJkd5G9dMELwdv1.wbnLwmEyRClTukARNhuQ!/b/dDIBAAAAAAAA&bo=tAXKAwAAAAADB1o!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V13eIAYa44toDv/880CN1Wt2nCtVqIZnI9H48vaAknsg8sCb4bP4HMG.0I!/b/dDEBAAAAAAAA&bo=sAVMAQAAAAADF8o!&rf=viewer_4">
+<meta property="og:image" content="http://m.qpic.cn/psb?/V13eIAYa44toDv/6MhGWgRfdVM1d*F8zXMUGOVOwgKzkjLnvUAxk*Qly7I!/b/dFkAAAAAAAAA&bo=3ARaAAAAAAADF7A!&rf=viewer_4">
+<meta property="og:updated_time" content="2018-07-23T05:37:20.400Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C语言格式化读取">
-<meta name="twitter:description" content="格式化输入scanf以空白字符为定界符，但如果输入的字符串是以其它字符为定界符的，如果在读取之后再进行字符串处理将会很麻烦，所以我们可以用到一个很有用的东西，[]就是专门处理这个问题的转换说明符。[]转换说明符可以通过两种方式产生结果字符集，如果第一个[字符右边没有抑扬符^，那么处于[]之间的字符就是结果字符集，不在其中的可输入字符都作为定界符；如果左边[符号紧靠一个抑扬符^，那么意义相反，^和]">
+<meta name="twitter:title" content="木犀星计划--shell入门">
+<meta name="twitter:description" content="写在开始之前 首先欢迎大家参加木犀星计划，希望你们可以顺利完成星计划成为木犀实习生，加入我们木犀大家庭。 此博客主要介绍一些常用的Linux基础命令，命令不是很复杂，但是很有趣，也需要大家去记忆，希望你在看这篇博的的时候身边有一台可以使用的Linux或macOS电脑。这样可以跟着教程做练习，提高学习效率。 如果你是Ubuntu系统可以先使用系统自带的bash，日后可以去探索其他的shell。如果你">
+<meta name="twitter:image" content="http://m.qpic.cn/psb?/V13eIAYa44toDv/pt6nxY4NJkd5G9dMELwdv1.wbnLwmEyRClTukARNhuQ!/b/dDIBAAAAAAAA&bo=tAXKAwAAAAADB1o!&rf=viewer_4">
 
 
 
 
 
 
-  <link rel="canonical" href="http://Darren2017.github.io/2018/05/25/C语言格式化读取/"/>
+  <link rel="canonical" href="http://Darren2017.github.io/2018/07/23/木犀星计划-shell入门/"/>
 
 
 
@@ -129,7 +132,7 @@
     sidebar: "",
   };
 </script>
-  <title>C语言格式化读取 | Darren</title>
+  <title>木犀星计划--shell入门 | Darren</title>
   
 
 
@@ -277,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Darren2017.github.io/2018/05/25/C语言格式化读取/">
+    <link itemprop="mainEntityOfPage" href="http://Darren2017.github.io/2018/07/23/木犀星计划-shell入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Darren">
@@ -294,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C语言格式化读取</h1>
+          <h1 class="post-title" itemprop="name headline">木犀星计划--shell入门</h1>
         
 
         <div class="post-meta">
@@ -306,7 +309,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-25T10:54:21+08:00">2018-05-25</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-23T11:54:39+08:00">2018-07-23</time>
             
 
             
@@ -315,24 +318,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -361,11 +346,118 @@
       
 
       
-        <h1 id="格式化输入"><a href="#格式化输入" class="headerlink" title="格式化输入"></a>格式化输入</h1><p><code>scanf</code>以空白字符为定界符，但如果输入的字符串是以其它字符为定界符的，如果在读取之后再进行字符串处理将会很麻烦，所以我们可以用到一个很有用的东西，<code>[]</code>就是专门处理这个问题的转换说明符。<code>[]</code>转换说明符可以通过两种方式产生结果字符集，如果第一个<code>[</code>字符右边没有抑扬符<code>^</code>，那么处于<code>[]</code>之间的字符就是结果字符集，不在其中的可输入字符都作为定界符；如果左边<code>[</code>符号紧靠一个抑扬符<code>^</code>，那么意义相反，<code>^</code>和<code>]</code>之间的字符是定界符，其余可输入字符是结果字符集。</p>
-<h1 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h1><ul>
-<li><code>scanf(&quot;%[abcd]&quot;, str)</code>, 输入<code>darrencd</code>,则<code>str</code>中的内容是<code>dacd</code>。</li>
-<li><code>scanf(&quot;%[^abcd]&quot;, str)</code>, 输入<code>today</code>，则<code>str</code>中的内容是<code>to</code>，遇到定界符之一<code>d</code>结束读取。</li>
+        <h4 id="写在开始之前"><a href="#写在开始之前" class="headerlink" title="写在开始之前"></a>写在开始之前</h4><ul>
+<li>首先欢迎大家参加木犀星计划，希望你们可以顺利完成星计划成为木犀实习生，加入我们木犀大家庭。</li>
+<li>此博客主要介绍一些常用的Linux基础命令，命令不是很复杂，但是很有趣，也需要大家去记忆，希望你在看这篇博的的时候身边有一台可以使用的Linux或macOS电脑。这样可以跟着教程做练习，提高学习效率。</li>
+<li>如果你是Ubuntu系统可以先使用系统自带的bash，日后可以去探索其他的shell。如果你是macOS推荐使用 <code>oh my zsh</code> , 至于 <code>oh my zsh</code> 的安装教程大家可以去网上搜索，也算是对大家动手能力一种测试。</li>
 </ul>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><ul>
+<li><p><code>ls[选项][参数]</code> </p>
+<ul>
+<li>介绍： 查看文件内容，参数可选</li>
+<li><p>选项内容：</p>
+<ul>
+<li><code>-a 显示全部内容   ps:以.开头的文件/文件夹是隐藏的</code></li>
+<li><code>-l 查看详情</code></li>
+</ul>
+</li>
+<li><p>示例<br>   <img src="http://m.qpic.cn/psb?/V13eIAYa44toDv/pt6nxY4NJkd5G9dMELwdv1.wbnLwmEyRClTukARNhuQ!/b/dDIBAAAAAAAA&amp;bo=tAXKAwAAAAADB1o!&amp;rf=viewer_4" alt="示例"></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>cat[内容]</code><ul>
+<li>介绍：显示文件内容</li>
+<li>示例：<code>cat starplan.md</code>显示<code>starplan</code>文件中的内容</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>cd[目录]</code><ul>
+<li>介绍： 切换文件路径，其后可加当前文件之下的路径，也可以加绝对路径</li>
+<li>选项内容<ul>
+<li><code>~</code>表示家目录</li>
+<li><code>/</code>表示根目录</li>
+<li><code>-</code>表示上次所在路径</li>
+<li><code>pwd</code>查看当前路径的绝对路径</li>
+<li><code>.</code>表示当前目录</li>
+<li><code>..</code>表示上一层目录 </li>
+<li>ps:  看到这里你可能会觉得是不是<code>...</code>表示上上层目录啊！抱歉似乎这种骚操作Linux不支持，不过macOS是支持的，而且你也可以使用<code>....</code>作用和你想的一样</li>
+</ul>
+</li>
+<li>示例<br>  <img src="http://m.qpic.cn/psb?/V13eIAYa44toDv/880CN1Wt2nCtVqIZnI9H48vaAknsg8sCb4bP4HMG.0I!/b/dDEBAAAAAAAA&amp;bo=sAVMAQAAAAADF8o!&amp;rf=viewer_4" alt="示例"></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>touch[内容]</code><ul>
+<li>介绍：创建新的文件</li>
+<li>示例：<code>touch test.cpp</code>创建<code>test.cpp</code>文件</li>
+</ul>
+</li>
+<li><code>mkdir[内容]</code><ul>
+<li>介绍： 创建新的文件夹</li>
+<li>示例：<code>mkdir starplan</code>创建<code>starplan</code>文件夹</li>
+</ul>
+</li>
+<li><p><code>rm[内容][参数]</code></p>
+<ul>
+<li>介绍：删除文件/文件夹</li>
+<li>选项内容：<ul>
+<li><code>-r</code>递归处理，将指定目录下的所有文件与子目录一并处理</li>
+<li><code>-f</code>强制删除文件或目录</li>
+<li>ps：指定被删除的文件列表，如果参数中含有目录，则必须加上<code>-r</code>选项，最暴力的是加<code>-rf</code>,不过慎用，除非你确定你所选择的目录是你想要删除的。</li>
+</ul>
+</li>
+<li>示例：<code>rm test.md</code>删除<code>test.md</code>文件</li>
+</ul>
+</li>
+<li><p><code>cp[选项][原文件目录][目标目录]</code></p>
+<ul>
+<li>介绍：复制文件/目录</li>
+<li>选项介绍<ul>
+<li><code>-r</code>复制目录</li>
+<li><code>-p</code>连文件属性一起复制</li>
+</ul>
+</li>
+<li>示例：<code>cp pots.cpp ~/Documents/</code>将<code>pots.cpp</code>文件移动到家目录下的<code>Document</code>文件夹下</li>
+</ul>
+</li>
+<li><code>mv[原文件目录][目标文件目录]</code><ul>
+<li>介绍：移动文件/目录+文件/目录重命名，移动命令和<code>cp</code>使用类似，此处不过多介绍，重命名功能只需要将第二个选项改为自己想要的新名字即可</li>
+<li>示例：<code>mv backend muxi</code>将<code>backend</code>重命名为<code>muxi</code></li>
+</ul>
+</li>
+<li><code>whereis[选项] [命令名]</code><ul>
+<li>介绍：查找命令</li>
+<li>选项介绍<ul>
+<li><code>-b</code> 只查找可执行文件</li>
+<li><code>-m</code> 只查找帮助文件</li>
+</ul>
+</li>
+<li>示例：<br>  <img src="http://m.qpic.cn/psb?/V13eIAYa44toDv/6MhGWgRfdVM1d*F8zXMUGOVOwgKzkjLnvUAxk*Qly7I!/b/dFkAAAAAAAAA&amp;bo=3ARaAAAAAAADF7A!&amp;rf=viewer_4" alt="示例"></li>
+</ul>
+</li>
+<li><code>shoutdown[选项][时间]</code><ul>
+<li>介绍：关机和重启</li>
+<li>选项介绍<ul>
+<li><code>-c</code> 取消前一个关机命令</li>
+<li><code>-h</code> 关机</li>
+<li><code>-r</code> 重启</li>
+</ul>
+</li>
+<li>时间介绍：<ul>
+<li><code>+分钟</code> 于几分钟后关机/重启</li>
+<li><code>详细时间</code> 于某一事件关机/重启</li>
+<li><code>now</code> 立刻关机/重启</li>
+</ul>
+</li>
+<li>示例：<code>shutdown -h -now</code>立刻关机   </li>
+</ul>
+</li>
+</ul>
+<h4 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h4><p>本博客中所写的命令中参数并未全部列出，只是给出了基础的常用的，你可以尝试在命令后加<code>--help</code>查看具体可选参数</p>
 
       
     </div>
@@ -385,12 +477,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/05/25/C语言格式化读取/">C语言格式化读取</a></p>
+  <p><span>本文标题:</span><a href="/2018/07/23/木犀星计划-shell入门/">木犀星计划--shell入门</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Darren 的个人博客">Darren</a></p>
-  <p><span>发布时间:</span>2018年05月25日 - 10:05</p>
-  <p><span>最后更新:</span>2018年05月25日 - 11:05</p>
-  <p><span>原始链接:</span><a href="/2018/05/25/C语言格式化读取/" title="C语言格式化读取">http://Darren2017.github.io/2018/05/25/C语言格式化读取/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Darren2017.github.io/2018/05/25/C语言格式化读取/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年07月23日 - 11:07</p>
+  <p><span>最后更新:</span>2018年07月23日 - 13:07</p>
+  <p><span>原始链接:</span><a href="/2018/07/23/木犀星计划-shell入门/" title="木犀星计划--shell入门">http://Darren2017.github.io/2018/07/23/木犀星计划-shell入门/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Darren2017.github.io/2018/07/23/木犀星计划-shell入门/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -420,12 +512,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/格式化输入/" rel="tag"># 格式化输入</a>
-          
-        </div>
-      
 
       
       
@@ -435,8 +521,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/07/SQL笔记/" rel="next" title="SQL笔记">
-                <i class="fa fa-chevron-left"></i> SQL笔记
+              <a href="/2018/07/19/木犀星计划-Linux虚拟机安装/" rel="next" title="木犀星计划--Linux虚拟机安装">
+                <i class="fa fa-chevron-left"></i> 木犀星计划--Linux虚拟机安装
               </a>
             
           </div>
@@ -444,10 +530,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/19/木犀星计划-Linux虚拟机安装/" rel="prev" title="木犀星计划--Linux虚拟机安装">
-                木犀星计划--Linux虚拟机安装 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -601,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#格式化输入"><span class="nav-number">1.</span> <span class="nav-text">格式化输入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#demo"><span class="nav-number">2.</span> <span class="nav-text">demo</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#写在开始之前"><span class="nav-number">1.</span> <span class="nav-text">写在开始之前</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用命令"><span class="nav-number"></span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#写在最后"><span class="nav-number">1.</span> <span class="nav-text">写在最后</span></a></li></ol></div>
             
 
           </div>
