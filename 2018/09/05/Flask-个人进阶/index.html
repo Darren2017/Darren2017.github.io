@@ -111,7 +111,7 @@
 <meta property="og:site_name" content="Darren">
 <meta property="og:description" content="首先感谢老板的课程，上午刚看了个这门课，虽然想学但是奈何没钱买啊！然后下午老板就给买了…..幸福来的太突然。之前用“狗书”学过 Flask， 这次看完课程感觉有些比较新的东西，总结一下，不想看完就忘了。   pipenv在看这门课程之前一直是用virtualenv来做虚拟环境的管理，感觉还挺好用的。但是课程中七月老师用的是pipenv，相比较而言感觉pipenv确实挺好用的。相比较之下virtua">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/005YhI8igy1fuz14ahg5fj30rr0du4gu">
-<meta property="og:updated_time" content="2018-09-05T15:30:35.571Z">
+<meta property="og:updated_time" content="2018-09-05T15:40:03.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flask_个人进阶">
 <meta name="twitter:description" content="首先感谢老板的课程，上午刚看了个这门课，虽然想学但是奈何没钱买啊！然后下午老板就给买了…..幸福来的太突然。之前用“狗书”学过 Flask， 这次看完课程感觉有些比较新的东西，总结一下，不想看完就忘了。   pipenv在看这门课程之前一直是用virtualenv来做虚拟环境的管理，感觉还挺好用的。但是课程中七月老师用的是pipenv，相比较而言感觉pipenv确实挺好用的。相比较之下virtua">
@@ -402,6 +402,7 @@
 <li><code>re</code>的值为<code>__enter__</code>方法返回的值，<code>with Myresource() as re:</code>语句会执行<code>__enter__</code>方法中的内容。</li>
 <li>当<code>with</code>语句结束或出现异常时会执行<code>__exit__</code>方法中的内容。如果<code>__exit__</code>返回<code>False</code>则会抛出异常，如果返回<code>True</code>则不会抛出异常。</li>
 </ul>
+<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><p>在七月老师的课程中提出来配置文件可以分成两类，一类是公开的可以上传到GitHub上的，另一类是隐私性的，需要写在gitignore中。<br>之前我们的做法都是隐私的数据写成环境变量用os来读取，但是我经常碰到os读取不到的问题，所以感觉这种方式也不错，相对在服务器的环境变量中配置到不如在服务器中新开一个私密配置文件。所需要的信息依然写在README中。</p>
 <h1 id="线程与进程"><a href="#线程与进程" class="headerlink" title="线程与进程"></a>线程与进程</h1><h1 id="一种思想"><a href="#一种思想" class="headerlink" title="一种思想"></a>一种思想</h1><ul>
 <li>看了七月老师课感觉收获最大的是一种思想。同样是程序，可能实现的功能是一样的，但是感觉七月写的真的有种很优美的感觉，如果自己去写就太粗糙了。    </li>
 <li>代码写了不仅是用来运行的，很大程度上是用来看的，不仅是给自己看，更多时候是给别人看（几个月之后看自己的代码和别人的可能没啥区别，所以说对自己好一点）。所以写一个优雅的程序真的很重要，起码现在我写完的程序我是绝对不想去碰第二次的，太痛苦了。   </li>
@@ -651,7 +652,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pipenv"><span class="nav-number">1.</span> <span class="nav-text">pipenv</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#add-url-rule"><span class="nav-number">2.</span> <span class="nav-text">add_url_rule</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#if-name-main"><span class="nav-number">3.</span> <span class="nav-text">if __name__ == __main__</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flask框架结构"><span class="nav-number">4.</span> <span class="nav-text">flask框架结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上下文"><span class="nav-number">5.</span> <span class="nav-text">上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是上下文"><span class="nav-number">5.1.</span> <span class="nav-text">什么是上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AppContext"><span class="nav-number">5.2.</span> <span class="nav-text">AppContext</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RequestContent"><span class="nav-number">5.3.</span> <span class="nav-text">RequestContent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#with"><span class="nav-number">5.4.</span> <span class="nav-text">with</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程与进程"><span class="nav-number">6.</span> <span class="nav-text">线程与进程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一种思想"><span class="nav-number">7.</span> <span class="nav-text">一种思想</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pipenv"><span class="nav-number">1.</span> <span class="nav-text">pipenv</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#add-url-rule"><span class="nav-number">2.</span> <span class="nav-text">add_url_rule</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#if-name-main"><span class="nav-number">3.</span> <span class="nav-text">if __name__ == __main__</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flask框架结构"><span class="nav-number">4.</span> <span class="nav-text">flask框架结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上下文"><span class="nav-number">5.</span> <span class="nav-text">上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是上下文"><span class="nav-number">5.1.</span> <span class="nav-text">什么是上下文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AppContext"><span class="nav-number">5.2.</span> <span class="nav-text">AppContext</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RequestContent"><span class="nav-number">5.3.</span> <span class="nav-text">RequestContent</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#with"><span class="nav-number">5.4.</span> <span class="nav-text">with</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置文件"><span class="nav-number">6.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程与进程"><span class="nav-number">7.</span> <span class="nav-text">线程与进程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一种思想"><span class="nav-number">8.</span> <span class="nav-text">一种思想</span></a></li></ol></div>
             
 
           </div>
@@ -700,7 +701,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.7k字</span>
+  <span class="post-count">博客全站共10.9k字</span>
 </div>
 
         
