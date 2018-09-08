@@ -110,7 +110,7 @@
 <meta property="og:url" content="http://Darren2017.github.io/2018/09/08/序列构成的数组/index.html">
 <meta property="og:site_name" content="Darren">
 <meta property="og:description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列list、tuple、str 列表列表推导列表推">
-<meta property="og:updated_time" content="2018-09-08T07:38:29.648Z">
+<meta property="og:updated_time" content="2018-09-08T15:18:34.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="序列构成的数组">
 <meta name="twitter:description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列list、tuple、str 列表列表推导列表推">
@@ -374,20 +374,21 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">board = [[<span class="string">'-'</span>] * <span class="number">3</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>)]</span><br><span class="line">board[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">'X'</span></span><br><span class="line">board</span><br><span class="line"></span><br><span class="line">weird_board = [[<span class="string">'-'</span>] * <span class="number">3</span> ] * <span class="number">3</span>		//这是一个坑</span><br><span class="line">weird_board[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">'X'</span></span><br><span class="line">board</span><br></pre></td></tr></table></figure>
 <p>另外也可以使用<code>sys.getsizeof(obj)</code>来查看内存的占用，这里边有一个很有意思的事情。多改变几次数值，观察下内存的变化，你会发现一件很有意思的事情，可以猜想下为什么会有这种变化。 </p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mylist = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">test = [mylist] * <span class="number">30</span></span><br><span class="line"></span><br><span class="line">mylist</span><br><span class="line">test</span><br><span class="line">sys.getsizeof(mylist)</span><br><span class="line">sys.getsizeof(test)</span><br></pre></td></tr></table></figure>
-<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort()"></a><code>list.sort()</code></h3><p>就地排序，改变原序列的值并且返回<code>None</code></p>
-<h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted()"></a><code>sorted()</code></h3><p>不改变原序列的值，生成一个新的列表，可以接受任何形式的可迭代对象作为参数。</p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort"></a><code>list.sort</code></h3><p>就地排序，改变原序列的值并且返回<code>None</code></p>
+<h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a><code>sorted</code></h3><p>不改变原序列的值，生成一个新的列表，可以接受任何形式的可迭代对象作为参数。</p>
 <h3 id="共同点："><a href="#共同点：" class="headerlink" title="共同点："></a>共同点：</h3><p>两个可选关键字参数   </p>
 <ul>
 <li><code>reverse</code>：默认值为<code>False</code>，如果设置为<code>True</code>，则被排序的序列会以降序输出。  </li>
 <li><code>key</code>：只有一个参数的函数。这样的方式体现了一种编写API的思想，将API的功能交给调用方来确定，使得相应的API更加灵活。</li>
 </ul>
+<h2 id="查找与插入"><a href="#查找与插入" class="headerlink" title="查找与插入"></a>查找与插入</h2><p><code>bisect</code>模块主要包含两个主要函数，<code>bisect</code>和<code>insort</code>，两个函数都利用二分查找算法在<strong>有序</strong>序列中查找或插入元素</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bisect.bisect_left(t,x) <span class="comment">#在T列表中查找x，若存在，返回x左侧位置</span></span><br><span class="line">bisect.bisect_right(t,x)</span><br><span class="line">bisect.insort_left(t,x) <span class="comment">#在T列表中查找X，若存在，插入x左侧；</span></span><br><span class="line">bisect.insort_right(t,x)</span><br></pre></td></tr></table></figure>
 <h1 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h1><p>元组常被称为不可变的列表，但初此之外元组还可以用于没有字段名的记录。</p>
 <h2 id="元组拆包"><a href="#元组拆包" class="headerlink" title="元组拆包"></a>元组拆包</h2><ul>
 <li>元组拆包可以应用到任何可迭代对象上，唯一的硬性要求是被可迭代对象中元素的数量必须要跟接受这些元素的元组的空档数一致，另外可以用<code>*</code>来忽略多余的元素，也可以使用<code>_</code>占位符，来忽略某几个元素。   </li>
 <li>接受表达式的元组可以是嵌套式的，但接受元组的嵌套结构必须符合表达式本身的嵌套结构。  </li>
 </ul>
 <h2 id="与列表的不同"><a href="#与列表的不同" class="headerlink" title="与列表的不同"></a>与列表的不同</h2><p>除了跟增减元素相关的方法之外，元组支持列表的其他所有方法。例外是元组没有<code>__reversed__</code>方法，但是仍然可以使用<code>reversed(tuple)</code>。</p>
-<p>未完待续…….</p>
 
       
     </div>
@@ -410,7 +411,7 @@
   <p><span>本文标题:</span><a href="/2018/09/08/序列构成的数组/">序列构成的数组</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Darren 的个人博客">Darren</a></p>
   <p><span>发布时间:</span>2018年09月08日 - 15:09</p>
-  <p><span>最后更新:</span>2018年09月08日 - 15:09</p>
+  <p><span>最后更新:</span>2018年09月08日 - 23:09</p>
   <p><span>原始链接:</span><a href="/2018/09/08/序列构成的数组/" title="序列构成的数组">http://Darren2017.github.io/2018/09/08/序列构成的数组/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Darren2017.github.io/2018/09/08/序列构成的数组/"  aria-label="复制成功！"></i></span>
   </p>
@@ -633,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序列类型"><span class="nav-number">1.</span> <span class="nav-text">序列类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器序列"><span class="nav-number">1.1.</span> <span class="nav-text">容器序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扁平序列"><span class="nav-number">1.2.</span> <span class="nav-text">扁平序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可变序列"><span class="nav-number">1.3.</span> <span class="nav-text">可变序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不可变序列"><span class="nav-number">1.4.</span> <span class="nav-text">不可变序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表"><span class="nav-number">2.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表推导"><span class="nav-number">2.1.</span> <span class="nav-text">列表推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器表达式"><span class="nav-number">2.2.</span> <span class="nav-text">生成器表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片"><span class="nav-number">2.3.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列的-与"><span class="nav-number">2.4.</span> <span class="nav-text">序列的+与*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">2.5.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#list-sort"><span class="nav-number">2.5.1.</span> <span class="nav-text">list.sort()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sorted"><span class="nav-number">2.5.2.</span> <span class="nav-text">sorted()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共同点："><span class="nav-number">2.5.3.</span> <span class="nav-text">共同点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元组"><span class="nav-number">3.</span> <span class="nav-text">元组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#元组拆包"><span class="nav-number">3.1.</span> <span class="nav-text">元组拆包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与列表的不同"><span class="nav-number">3.2.</span> <span class="nav-text">与列表的不同</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序列类型"><span class="nav-number">1.</span> <span class="nav-text">序列类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器序列"><span class="nav-number">1.1.</span> <span class="nav-text">容器序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扁平序列"><span class="nav-number">1.2.</span> <span class="nav-text">扁平序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可变序列"><span class="nav-number">1.3.</span> <span class="nav-text">可变序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不可变序列"><span class="nav-number">1.4.</span> <span class="nav-text">不可变序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表"><span class="nav-number">2.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表推导"><span class="nav-number">2.1.</span> <span class="nav-text">列表推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器表达式"><span class="nav-number">2.2.</span> <span class="nav-text">生成器表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片"><span class="nav-number">2.3.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列的-与"><span class="nav-number">2.4.</span> <span class="nav-text">序列的+与*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">2.5.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#list-sort"><span class="nav-number">2.5.1.</span> <span class="nav-text">list.sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sorted"><span class="nav-number">2.5.2.</span> <span class="nav-text">sorted</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共同点："><span class="nav-number">2.5.3.</span> <span class="nav-text">共同点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找与插入"><span class="nav-number">2.6.</span> <span class="nav-text">查找与插入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元组"><span class="nav-number">3.</span> <span class="nav-text">元组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#元组拆包"><span class="nav-number">3.1.</span> <span class="nav-text">元组拆包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与列表的不同"><span class="nav-number">3.2.</span> <span class="nav-text">与列表的不同</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -682,7 +683,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共12.7k字</span>
+  <span class="post-count">博客全站共12.8k字</span>
 </div>
 
         
