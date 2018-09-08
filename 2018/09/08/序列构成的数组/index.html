@@ -103,27 +103,24 @@
   <meta name="keywords" content="python,读书笔记," />
 
 
-<meta name="description" content="collectionscollections是Python内建的一个集合模块，提供了许多有用的集合类。 namedtuple具名元组，tuple的一个子类。能够用来创建类似于tuple的数据类型，除了能够用索引来访问数据，能够迭代，更能够方便的通过属性名来访问数据。类似于tuple，namedtuple的属性也是不可改变的。 123456from collections import namedt">
+<meta name="description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列list、tuple、str 列表列表推导列表推">
 <meta name="keywords" content="python,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python数据模型">
-<meta property="og:url" content="http://Darren2017.github.io/2018/09/07/Python数据模型/index.html">
+<meta property="og:title" content="序列构成的数组">
+<meta property="og:url" content="http://Darren2017.github.io/2018/09/08/序列构成的数组/index.html">
 <meta property="og:site_name" content="Darren">
-<meta property="og:description" content="collectionscollections是Python内建的一个集合模块，提供了许多有用的集合类。 namedtuple具名元组，tuple的一个子类。能够用来创建类似于tuple的数据类型，除了能够用索引来访问数据，能够迭代，更能够方便的通过属性名来访问数据。类似于tuple，namedtuple的属性也是不可改变的。 123456from collections import namedt">
-<meta property="og:image" content="https://ww1.sinaimg.cn/large/005YhI8igy1fv1fapz076j30t50q1wks">
-<meta property="og:image" content="https://ww3.sinaimg.cn/large/005YhI8igy1fv1fkixuyaj30t50rm7au">
-<meta property="og:updated_time" content="2018-09-07T16:16:32.482Z">
+<meta property="og:description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列list、tuple、str 列表列表推导列表推">
+<meta property="og:updated_time" content="2018-09-08T07:38:29.648Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python数据模型">
-<meta name="twitter:description" content="collectionscollections是Python内建的一个集合模块，提供了许多有用的集合类。 namedtuple具名元组，tuple的一个子类。能够用来创建类似于tuple的数据类型，除了能够用索引来访问数据，能够迭代，更能够方便的通过属性名来访问数据。类似于tuple，namedtuple的属性也是不可改变的。 123456from collections import namedt">
-<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/005YhI8igy1fv1fapz076j30t50q1wks">
+<meta name="twitter:title" content="序列构成的数组">
+<meta name="twitter:description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列list、tuple、str 列表列表推导列表推">
 
 
 
 
 
 
-  <link rel="canonical" href="http://Darren2017.github.io/2018/09/07/Python数据模型/"/>
+  <link rel="canonical" href="http://Darren2017.github.io/2018/09/08/序列构成的数组/"/>
 
 
 
@@ -132,7 +129,7 @@
     sidebar: "",
   };
 </script>
-  <title>Python数据模型 | Darren</title>
+  <title>序列构成的数组 | Darren</title>
   
 
 
@@ -280,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Darren2017.github.io/2018/09/07/Python数据模型/">
+    <link itemprop="mainEntityOfPage" href="http://Darren2017.github.io/2018/09/08/序列构成的数组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Darren">
@@ -297,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python数据模型</h1>
+          <h1 class="post-title" itemprop="name headline">序列构成的数组</h1>
         
 
         <div class="post-meta">
@@ -309,7 +306,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-07T23:50:06+08:00">2018-09-07</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-08T15:34:10+08:00">2018-09-08</time>
             
 
             
@@ -364,28 +361,33 @@
       
 
       
-        <h1 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h1><p><code>collections</code>是Python内建的一个集合模块，提供了许多有用的集合类。</p>
-<h2 id="namedtuple"><a href="#namedtuple" class="headerlink" title="namedtuple"></a>namedtuple</h2><p>具名元组，<code>tuple</code>的一个子类。能够用来创建类似于<code>tuple</code>的数据类型，除了能够用索引来访问数据，能够迭代，更能够方便的通过属性名来访问数据。类似于<code>tuple</code>，<code>namedtuple</code>的属性也是不可改变的。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line">	</span><br><span class="line">Card = collections.namedtuple(<span class="string">'Card'</span>, [<span class="string">'rand'</span>, <span class="string">'suit'</span>])</span><br><span class="line">	</span><br><span class="line">beer_card = Card(<span class="string">'7'</span>, <span class="string">'diamonds'</span>)</span><br><span class="line">print(beer_card.rand, beer_card[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
-<h2 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h2><p><code>deque</code>是高效实现了插入和删除操作的双向列表，适合用于队列和栈。相较而言<code>list</code>可以按索引快速访问元素，但是插入和删除元素则很慢，因为<code>list</code>是现行存储，数据量大的时候，插入和删除效率很低。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line">sq = deque([str(x) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)])</span><br><span class="line"></span><br><span class="line">sq.append(<span class="string">'x'</span>)		//入栈 <span class="keyword">or</span> 入队</span><br><span class="line">sq.pop()				//出栈</span><br><span class="line">sq.appendleft(<span class="string">'y'</span>)	</span><br><span class="line">sq.popleft()			//出队</span><br></pre></td></tr></table></figure>
-<h2 id="defaultdict"><a href="#defaultdict" class="headerlink" title="defaultdict"></a>defaultdict</h2><p>安全的字典。使用<code>dict</code>时，如果引用的<code>key</code>不存在，则会抛出<code>KeyError</code>，如果希望<code>key</code>不存在时不抛出<code>Error</code>而是返回一个默认值，则可以使用<code>deafultdict</code></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line">dedict = defaultdict(&#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;,<span class="keyword">lambda</span>: <span class="string">'not found'</span>)</span><br><span class="line"></span><br><span class="line">dedict[<span class="string">'key'</span>] = <span class="string">'value'</span></span><br><span class="line">dedict[<span class="string">'key'</span>]</span><br><span class="line">dedict[<span class="string">'nokey'</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="OrderedDict"><a href="#OrderedDict" class="headerlink" title="OrderedDict"></a>OrderedDict</h2><p>在<code>dict</code>中，<code>key</code>是无序的，所以当我们对<code>dict</code>做迭代时顺序是不确定的。当我们需要一个确定的顺序时可以使用<code>OrderedDict</code>。<code>OrderedDict</code>中<code>key</code>的排序是按照插入顺序排序。   </p>
-<h2 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h2><p><code>Counter</code>是一个简单的计数器，并且只存储次数大于一的元素，否则可以访问，但是不存储。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line">c = Counter()</span><br><span class="line">c[<span class="string">'d'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> str <span class="keyword">in</span> <span class="string">'mycounter'</span>:  </span><br><span class="line">	c[str] += <span class="number">1</span></span><br><span class="line">c</span><br></pre></td></tr></table></figure>
-<h1 id="特殊方法"><a href="#特殊方法" class="headerlink" title="特殊方法"></a>特殊方法</h1><blockquote>
-<p>通常我们无需直接使用特殊方法，直接调用特殊方法的频率应该远远低于我们去实现他们的次数。通过内置函数（例如<code>len</code>、<code>iter</code>、<code>str</code>，等等）来使用特殊方法是最好的选择。这些内置函数不仅会调用特殊方法，通常还提供额外的好处，而且对于内置的类来说，他们的速度更快。    ————《Fluent Python》</p>
-</blockquote>
-<h2 id="getitem"><a href="#getitem" class="headerlink" title="__getitem__"></a><code>__getitem__</code></h2><p><code>__getitem__</code>方法的实现使得我们可以像<code>p[key]</code>这样来取值。并且我们通过索引来访问元素时也是使用了<code>__getitem__</code>方法。</p>
-<h2 id="len"><a href="#len" class="headerlink" title="__len__"></a><code>__len__</code></h2><p>当我们使用<code>len(obj)</code>函数来获取一个对象的长度时，便是调用了<code>__len__</code>方法。</p>
-<h2 id="repr-or-str"><a href="#repr-or-str" class="headerlink" title="__repr__ or __str__"></a><code>__repr__</code> or <code>__str__</code></h2><p>简单来说这两个方法都是用于显示的，但是<code>__str__</code>是面向用户的，<code>__repr__</code>是面向程序员的。<br>在使用<code>str()</code>或者是<code>print()</code>时候会首先调用<code>__str__</code>方法，并且这种方法返回的字符串对终端用户更友好。在没有实现<code>__str__</code>方法时，两个函数回去调用<code>__repr__</code>方法。如果两个方法二选一去实现，显而易见后者是我们的选择。</p>
-<h2 id="enter-and-exit"><a href="#enter-and-exit" class="headerlink" title="__enter__ and __exit__"></a><code>__enter__</code> and <code>__exit__</code></h2><p>用于上下文管理，简单讲解见<a href="https://darren2017.github.io/2018/09/05/Flask-个人进阶/#上下文">这里</a>。</p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ul>
-<li>跟运算符无关的特殊方法<br>  <img src="https://ww1.sinaimg.cn/large/005YhI8igy1fv1fapz076j30t50q1wks" alt="picture">  </li>
-<li>根运算符相关的特殊方法<br>  <img src="https://ww3.sinaimg.cn/large/005YhI8igy1fv1fkixuyaj30t50rm7au" alt="picture"></li>
+        <h1 id="序列类型"><a href="#序列类型" class="headerlink" title="序列类型"></a>序列类型</h1><h2 id="容器序列"><a href="#容器序列" class="headerlink" title="容器序列"></a>容器序列</h2><p><code>list</code>、<code>tuple</code>、<code>collections.deque</code>等序列可以存放不同类型的数据。</p>
+<h2 id="扁平序列"><a href="#扁平序列" class="headerlink" title="扁平序列"></a>扁平序列</h2><p><code>str</code>、<code>bytes</code>、<code>bytearray</code>、<code>memoryview</code>、<code>array.array</code>等序列只能容纳一种类型。</p>
+<h2 id="可变序列"><a href="#可变序列" class="headerlink" title="可变序列"></a>可变序列</h2><p><code>list</code>、<code>bytearray</code>、<code>memoryview</code>、<code>array.array</code>、<code>collections.deque</code></p>
+<h2 id="不可变序列"><a href="#不可变序列" class="headerlink" title="不可变序列"></a>不可变序列</h2><p><code>list</code>、<code>tuple</code>、<code>str</code></p>
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="列表推导"><a href="#列表推导" class="headerlink" title="列表推导"></a>列表推导</h2><p>列表推导（真的好用）是构建<code>list</code>的快捷方式，但劲酒虽好，不要贪杯哦！列表推导虽然好用，但是不要过度的使用，保持代码的简短，超过两行可以考虑使用<code>for</code>循环。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">colors = [<span class="string">'black'</span>, <span class="string">'white'</span>]</span><br><span class="line">sizes = [<span class="string">'S'</span>, <span class="string">'M'</span>, <span class="string">'L'</span>]</span><br><span class="line">tshirts = [(color, size) <span class="keyword">for</span> color <span class="keyword">in</span> colors <span class="keyword">for</span> size <span class="keyword">in</span> sizes]</span><br><span class="line"></span><br><span class="line">tshirts</span><br></pre></td></tr></table></figure>
+<h2 id="生成器表达式"><a href="#生成器表达式" class="headerlink" title="生成器表达式"></a>生成器表达式</h2><p>相较于列表推导，生成器表达式背后遵守了迭代器协议，可以逐个地产出元素，而不是先建立一个完整的列表，然后再把这个列表传递到某个构造函数里，如果我们需要的列表很大时，用列表推导的方式不仅耗费时间还耗费内存，而生成器表达式则避免了这个问题。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">L = [x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3000</span>) <span class="keyword">if</span> x % <span class="number">2</span>]		//列表推导</span><br><span class="line">J = (x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">3000</span>) <span class="keyword">if</span> x % <span class="number">2</span>)		//生成器表达式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">countL = <span class="number">0</span></span><br><span class="line">countJ = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> L:</span><br><span class="line">	countL += <span class="number">1</span></span><br><span class="line">	</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> J:</span><br><span class="line">	countJ += <span class="number">1</span></span><br><span class="line">	</span><br><span class="line">print(<span class="string">"countL == "</span>,countL, <span class="string">"     countJ == "</span>,countJ)		//可见二者的效果是一样的</span><br><span class="line">print(sys.getsizeof(J),  sys.getsizeof(L))		//在内存占用上二者的差距还是很大的</span><br></pre></td></tr></table></figure>
+<h2 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h2><p>格式：<code>swq[start:stop:step]</code><br>内部调用<code>__getitem__(slice(start:stop:step))</code>方法。<br>切片是个好东西，但是突然发现没的说………..</p>
+<h2 id="序列的-与"><a href="#序列的-与" class="headerlink" title="序列的+与*"></a>序列的<code>+</code>与<code>*</code></h2><p>这东西好用，但是有坑，据我所知GGH夏令营就被这个坑过，所以如果不熟悉慎用之。因为<code>*</code>有时并没有创建新的元素，而是增加了已有元素的引用。  </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">board = [[<span class="string">'-'</span>] * <span class="number">3</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>)]</span><br><span class="line">board[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">'X'</span></span><br><span class="line">board</span><br><span class="line"></span><br><span class="line">weird_board = [[<span class="string">'-'</span>] * <span class="number">3</span> ] * <span class="number">3</span>		//这是一个坑</span><br><span class="line">weird_board[<span class="number">1</span>][<span class="number">2</span>] = <span class="string">'X'</span></span><br><span class="line">board</span><br></pre></td></tr></table></figure>
+<p>另外也可以使用<code>sys.getsizeof(obj)</code>来查看内存的占用，这里边有一个很有意思的事情。多改变几次数值，观察下内存的变化，你会发现一件很有意思的事情，可以猜想下为什么会有这种变化。 </p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mylist = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">test = [mylist] * <span class="number">30</span></span><br><span class="line"></span><br><span class="line">mylist</span><br><span class="line">test</span><br><span class="line">sys.getsizeof(mylist)</span><br><span class="line">sys.getsizeof(test)</span><br></pre></td></tr></table></figure>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><h3 id="list-sort"><a href="#list-sort" class="headerlink" title="list.sort()"></a><code>list.sort()</code></h3><p>就地排序，改变原序列的值并且返回<code>None</code></p>
+<h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted()"></a><code>sorted()</code></h3><p>不改变原序列的值，生成一个新的列表，可以接受任何形式的可迭代对象作为参数。</p>
+<h3 id="共同点："><a href="#共同点：" class="headerlink" title="共同点："></a>共同点：</h3><p>两个可选关键字参数   </p>
+<ul>
+<li><code>reverse</code>：默认值为<code>False</code>，如果设置为<code>True</code>，则被排序的序列会以降序输出。  </li>
+<li><code>key</code>：只有一个参数的函数。这样的方式体现了一种编写API的思想，将API的功能交给调用方来确定，使得相应的API更加灵活。</li>
 </ul>
-<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><p>其他的特殊方法还有很多，与以上集中特殊方法各有异同，能力有限，时间有限不做过度描述。</p>
+<h1 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h1><p>元组常被称为不可变的列表，但初此之外元组还可以用于没有字段名的记录。</p>
+<h2 id="元组拆包"><a href="#元组拆包" class="headerlink" title="元组拆包"></a>元组拆包</h2><ul>
+<li>元组拆包可以应用到任何可迭代对象上，唯一的硬性要求是被可迭代对象中元素的数量必须要跟接受这些元素的元组的空档数一致，另外可以用<code>*</code>来忽略多余的元素，也可以使用<code>_</code>占位符，来忽略某几个元素。   </li>
+<li>接受表达式的元组可以是嵌套式的，但接受元组的嵌套结构必须符合表达式本身的嵌套结构。  </li>
+</ul>
+<h2 id="与列表的不同"><a href="#与列表的不同" class="headerlink" title="与列表的不同"></a>与列表的不同</h2><p>除了跟增减元素相关的方法之外，元组支持列表的其他所有方法。例外是元组没有<code>__reversed__</code>方法，但是仍然可以使用<code>reversed(tuple)</code>。</p>
+<p>未完待续…….</p>
 
       
     </div>
@@ -405,12 +407,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/09/07/Python数据模型/">Python数据模型</a></p>
+  <p><span>本文标题:</span><a href="/2018/09/08/序列构成的数组/">序列构成的数组</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Darren 的个人博客">Darren</a></p>
-  <p><span>发布时间:</span>2018年09月07日 - 23:09</p>
-  <p><span>最后更新:</span>2018年09月08日 - 00:09</p>
-  <p><span>原始链接:</span><a href="/2018/09/07/Python数据模型/" title="Python数据模型">http://Darren2017.github.io/2018/09/07/Python数据模型/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Darren2017.github.io/2018/09/07/Python数据模型/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年09月08日 - 15:09</p>
+  <p><span>最后更新:</span>2018年09月08日 - 15:09</p>
+  <p><span>原始链接:</span><a href="/2018/09/08/序列构成的数组/" title="序列构成的数组">http://Darren2017.github.io/2018/09/08/序列构成的数组/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Darren2017.github.io/2018/09/08/序列构成的数组/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -457,8 +459,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/04/Flask-个人进阶/" rel="next" title="Flask_个人进阶">
-                <i class="fa fa-chevron-left"></i> Flask_个人进阶
+              <a href="/2018/09/07/Python数据模型/" rel="next" title="Python数据模型">
+                <i class="fa fa-chevron-left"></i> Python数据模型
               </a>
             
           </div>
@@ -466,10 +468,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/08/序列构成的数组/" rel="prev" title="序列构成的数组">
-                序列构成的数组 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -635,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#collections"><span class="nav-number">1.</span> <span class="nav-text">collections</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#namedtuple"><span class="nav-number">1.1.</span> <span class="nav-text">namedtuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deque"><span class="nav-number">1.2.</span> <span class="nav-text">deque</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#defaultdict"><span class="nav-number">1.3.</span> <span class="nav-text">defaultdict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OrderedDict"><span class="nav-number">1.4.</span> <span class="nav-text">OrderedDict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counter"><span class="nav-number">1.5.</span> <span class="nav-text">Counter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特殊方法"><span class="nav-number">2.</span> <span class="nav-text">特殊方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#getitem"><span class="nav-number">2.1.</span> <span class="nav-text">__getitem__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#len"><span class="nav-number">2.2.</span> <span class="nav-text">__len__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repr-or-str"><span class="nav-number">2.3.</span> <span class="nav-text">__repr__ or __str__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enter-and-exit"><span class="nav-number">2.4.</span> <span class="nav-text">__enter__ and __exit__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">2.5.</span> <span class="nav-text">附录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Others"><span class="nav-number">2.6.</span> <span class="nav-text">Others</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序列类型"><span class="nav-number">1.</span> <span class="nav-text">序列类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器序列"><span class="nav-number">1.1.</span> <span class="nav-text">容器序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扁平序列"><span class="nav-number">1.2.</span> <span class="nav-text">扁平序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可变序列"><span class="nav-number">1.3.</span> <span class="nav-text">可变序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不可变序列"><span class="nav-number">1.4.</span> <span class="nav-text">不可变序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#列表"><span class="nav-number">2.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表推导"><span class="nav-number">2.1.</span> <span class="nav-text">列表推导</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成器表达式"><span class="nav-number">2.2.</span> <span class="nav-text">生成器表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#切片"><span class="nav-number">2.3.</span> <span class="nav-text">切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列的-与"><span class="nav-number">2.4.</span> <span class="nav-text">序列的+与*</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">2.5.</span> <span class="nav-text">排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#list-sort"><span class="nav-number">2.5.1.</span> <span class="nav-text">list.sort()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sorted"><span class="nav-number">2.5.2.</span> <span class="nav-text">sorted()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共同点："><span class="nav-number">2.5.3.</span> <span class="nav-text">共同点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#元组"><span class="nav-number">3.</span> <span class="nav-text">元组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#元组拆包"><span class="nav-number">3.1.</span> <span class="nav-text">元组拆包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与列表的不同"><span class="nav-number">3.2.</span> <span class="nav-text">与列表的不同</span></a></li></ol></li></ol></div>
             
 
           </div>
