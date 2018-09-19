@@ -100,20 +100,20 @@
 
 
   
-  <meta name="keywords" content="读书笔记,python," />
+  <meta name="keywords" content="python,读书笔记," />
 
 
-<meta name="description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列list、tuple、str 列表列表推导列表推">
-<meta name="keywords" content="读书笔记,python">
+<meta name="description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列tuple、str 列表列表推导列表推导（真的好">
+<meta name="keywords" content="python,读书笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="序列构成的数组">
 <meta property="og:url" content="http://Darren2017.github.io/2018/09/08/序列构成的数组/index.html">
 <meta property="og:site_name" content="Darren">
-<meta property="og:description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列list、tuple、str 列表列表推导列表推">
-<meta property="og:updated_time" content="2018-09-08T15:18:34.106Z">
+<meta property="og:description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列tuple、str 列表列表推导列表推导（真的好">
+<meta property="og:updated_time" content="2018-09-19T16:19:18.316Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="序列构成的数组">
-<meta name="twitter:description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列list、tuple、str 列表列表推导列表推">
+<meta name="twitter:description" content="序列类型容器序列list、tuple、collections.deque等序列可以存放不同类型的数据。 扁平序列str、bytes、bytearray、memoryview、array.array等序列只能容纳一种类型。 可变序列list、bytearray、memoryview、array.array、collections.deque 不可变序列tuple、str 列表列表推导列表推导（真的好">
 
 
 
@@ -364,7 +364,7 @@
         <h1 id="序列类型"><a href="#序列类型" class="headerlink" title="序列类型"></a>序列类型</h1><h2 id="容器序列"><a href="#容器序列" class="headerlink" title="容器序列"></a>容器序列</h2><p><code>list</code>、<code>tuple</code>、<code>collections.deque</code>等序列可以存放不同类型的数据。</p>
 <h2 id="扁平序列"><a href="#扁平序列" class="headerlink" title="扁平序列"></a>扁平序列</h2><p><code>str</code>、<code>bytes</code>、<code>bytearray</code>、<code>memoryview</code>、<code>array.array</code>等序列只能容纳一种类型。</p>
 <h2 id="可变序列"><a href="#可变序列" class="headerlink" title="可变序列"></a>可变序列</h2><p><code>list</code>、<code>bytearray</code>、<code>memoryview</code>、<code>array.array</code>、<code>collections.deque</code></p>
-<h2 id="不可变序列"><a href="#不可变序列" class="headerlink" title="不可变序列"></a>不可变序列</h2><p><code>list</code>、<code>tuple</code>、<code>str</code></p>
+<h2 id="不可变序列"><a href="#不可变序列" class="headerlink" title="不可变序列"></a>不可变序列</h2><p><code>tuple</code>、<code>str</code></p>
 <h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="列表推导"><a href="#列表推导" class="headerlink" title="列表推导"></a>列表推导</h2><p>列表推导（真的好用）是构建<code>list</code>的快捷方式，但劲酒虽好，不要贪杯哦！列表推导虽然好用，但是不要过度的使用，保持代码的简短，超过两行可以考虑使用<code>for</code>循环。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">colors = [<span class="string">'black'</span>, <span class="string">'white'</span>]</span><br><span class="line">sizes = [<span class="string">'S'</span>, <span class="string">'M'</span>, <span class="string">'L'</span>]</span><br><span class="line">tshirts = [(color, size) <span class="keyword">for</span> color <span class="keyword">in</span> colors <span class="keyword">for</span> size <span class="keyword">in</span> sizes]</span><br><span class="line"></span><br><span class="line">tshirts</span><br></pre></td></tr></table></figure>
 <h2 id="生成器表达式"><a href="#生成器表达式" class="headerlink" title="生成器表达式"></a>生成器表达式</h2><p>相较于列表推导，生成器表达式背后遵守了迭代器协议，可以逐个地产出元素，而不是先建立一个完整的列表，然后再把这个列表传递到某个构造函数里，如果我们需要的列表很大时，用列表推导的方式不仅耗费时间还耗费内存，而生成器表达式则避免了这个问题。</p>
@@ -411,7 +411,7 @@
   <p><span>本文标题:</span><a href="/2018/09/08/序列构成的数组/">序列构成的数组</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Darren 的个人博客">Darren</a></p>
   <p><span>发布时间:</span>2018年09月08日 - 15:09</p>
-  <p><span>最后更新:</span>2018年09月08日 - 23:09</p>
+  <p><span>最后更新:</span>2018年09月20日 - 00:09</p>
   <p><span>原始链接:</span><a href="/2018/09/08/序列构成的数组/" title="序列构成的数组">http://Darren2017.github.io/2018/09/08/序列构成的数组/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Darren2017.github.io/2018/09/08/序列构成的数组/"  aria-label="复制成功！"></i></span>
   </p>
@@ -445,9 +445,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
-          
             <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/读书笔记/" rel="tag"># 读书笔记</a>
           
         </div>
       
@@ -546,7 +546,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -687,7 +687,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共13.8k字</span>
+  <span class="post-count">博客全站共15.0k字</span>
 </div>
 
         
