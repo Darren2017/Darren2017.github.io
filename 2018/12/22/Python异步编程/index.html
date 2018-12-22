@@ -103,27 +103,24 @@
   <meta name="keywords" content="python,读书笔记," />
 
 
-<meta name="description" content="collectionscollections是Python内建的一个集合模块，提供了许多有用的集合类。 namedtuple具名元组，tuple的一个子类。能够用来创建类似于tuple的数据类型，除了能够用索引来访问数据，能够迭代，更能够方便的通过属性名来访问数据。类似于tuple，namedtuple的属性也是不可改变的。 123456from collections import namedt">
+<meta name="description" content="同步与异步 &amp;amp; 阻塞与非阻塞前两者与后两者并没有一一对应的关系，即同步不一定是阻塞的，也可能是非阻塞的（当让这样做意义不大），同样异步可以是阻塞的也可以是非阻塞的。   同步与异步同步与异步关注的是消息通讯机制。   同步在发出一个调用时，如果没有得到返回结果则该调用就不会返回。也因此，同步的条件下只要返回便可以得到返回值。    异步在发出一个调用时，该调用直接返回，正因如此并不会立刻得">
 <meta name="keywords" content="python,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python数据模型">
-<meta property="og:url" content="http://Darren2017.github.io/2018/09/07/Python数据模型/index.html">
+<meta property="og:title" content="Python异步编程">
+<meta property="og:url" content="http://Darren2017.github.io/2018/12/22/Python异步编程/index.html">
 <meta property="og:site_name" content="Darren">
-<meta property="og:description" content="collectionscollections是Python内建的一个集合模块，提供了许多有用的集合类。 namedtuple具名元组，tuple的一个子类。能够用来创建类似于tuple的数据类型，除了能够用索引来访问数据，能够迭代，更能够方便的通过属性名来访问数据。类似于tuple，namedtuple的属性也是不可改变的。 123456from collections import namedt">
-<meta property="og:image" content="https://ww1.sinaimg.cn/large/005YhI8igy1fv1fapz076j30t50q1wks">
-<meta property="og:image" content="https://ww3.sinaimg.cn/large/005YhI8igy1fv1fkixuyaj30t50rm7au">
-<meta property="og:updated_time" content="2018-09-07T16:16:32.482Z">
+<meta property="og:description" content="同步与异步 &amp;amp; 阻塞与非阻塞前两者与后两者并没有一一对应的关系，即同步不一定是阻塞的，也可能是非阻塞的（当让这样做意义不大），同样异步可以是阻塞的也可以是非阻塞的。   同步与异步同步与异步关注的是消息通讯机制。   同步在发出一个调用时，如果没有得到返回结果则该调用就不会返回。也因此，同步的条件下只要返回便可以得到返回值。    异步在发出一个调用时，该调用直接返回，正因如此并不会立刻得">
+<meta property="og:updated_time" content="2018-12-22T09:46:40.069Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python数据模型">
-<meta name="twitter:description" content="collectionscollections是Python内建的一个集合模块，提供了许多有用的集合类。 namedtuple具名元组，tuple的一个子类。能够用来创建类似于tuple的数据类型，除了能够用索引来访问数据，能够迭代，更能够方便的通过属性名来访问数据。类似于tuple，namedtuple的属性也是不可改变的。 123456from collections import namedt">
-<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/005YhI8igy1fv1fapz076j30t50q1wks">
+<meta name="twitter:title" content="Python异步编程">
+<meta name="twitter:description" content="同步与异步 &amp;amp; 阻塞与非阻塞前两者与后两者并没有一一对应的关系，即同步不一定是阻塞的，也可能是非阻塞的（当让这样做意义不大），同样异步可以是阻塞的也可以是非阻塞的。   同步与异步同步与异步关注的是消息通讯机制。   同步在发出一个调用时，如果没有得到返回结果则该调用就不会返回。也因此，同步的条件下只要返回便可以得到返回值。    异步在发出一个调用时，该调用直接返回，正因如此并不会立刻得">
 
 
 
 
 
 
-  <link rel="canonical" href="http://Darren2017.github.io/2018/09/07/Python数据模型/"/>
+  <link rel="canonical" href="http://Darren2017.github.io/2018/12/22/Python异步编程/"/>
 
 
 
@@ -132,7 +129,7 @@
     sidebar: "",
   };
 </script>
-  <title>Python数据模型 | Darren</title>
+  <title>Python异步编程 | Darren</title>
   
 
 
@@ -280,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Darren2017.github.io/2018/09/07/Python数据模型/">
+    <link itemprop="mainEntityOfPage" href="http://Darren2017.github.io/2018/12/22/Python异步编程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Darren">
@@ -297,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python数据模型</h1>
+          <h1 class="post-title" itemprop="name headline">Python异步编程</h1>
         
 
         <div class="post-meta">
@@ -309,7 +306,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-07T23:50:06+08:00">2018-09-07</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-22T16:53:35+08:00">2018-12-22</time>
             
 
             
@@ -364,28 +361,28 @@
       
 
       
-        <h1 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h1><p><code>collections</code>是Python内建的一个集合模块，提供了许多有用的集合类。</p>
-<h2 id="namedtuple"><a href="#namedtuple" class="headerlink" title="namedtuple"></a>namedtuple</h2><p>具名元组，<code>tuple</code>的一个子类。能够用来创建类似于<code>tuple</code>的数据类型，除了能够用索引来访问数据，能够迭代，更能够方便的通过属性名来访问数据。类似于<code>tuple</code>，<code>namedtuple</code>的属性也是不可改变的。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line">	</span><br><span class="line">Card = collections.namedtuple(<span class="string">'Card'</span>, [<span class="string">'rand'</span>, <span class="string">'suit'</span>])</span><br><span class="line">	</span><br><span class="line">beer_card = Card(<span class="string">'7'</span>, <span class="string">'diamonds'</span>)</span><br><span class="line">print(beer_card.rand, beer_card[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
-<h2 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h2><p><code>deque</code>是高效实现了插入和删除操作的双向列表，适合用于队列和栈。相较而言<code>list</code>可以按索引快速访问元素，但是插入和删除元素则很慢，因为<code>list</code>是现行存储，数据量大的时候，插入和删除效率很低。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line">sq = deque([str(x) <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)])</span><br><span class="line"></span><br><span class="line">sq.append(<span class="string">'x'</span>)		//入栈 <span class="keyword">or</span> 入队</span><br><span class="line">sq.pop()				//出栈</span><br><span class="line">sq.appendleft(<span class="string">'y'</span>)	</span><br><span class="line">sq.popleft()			//出队</span><br></pre></td></tr></table></figure>
-<h2 id="defaultdict"><a href="#defaultdict" class="headerlink" title="defaultdict"></a>defaultdict</h2><p>安全的字典。使用<code>dict</code>时，如果引用的<code>key</code>不存在，则会抛出<code>KeyError</code>，如果希望<code>key</code>不存在时不抛出<code>Error</code>而是返回一个默认值，则可以使用<code>deafultdict</code></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line">dedict = defaultdict(&#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;,<span class="keyword">lambda</span>: <span class="string">'not found'</span>)</span><br><span class="line"></span><br><span class="line">dedict[<span class="string">'key'</span>] = <span class="string">'value'</span></span><br><span class="line">dedict[<span class="string">'key'</span>]</span><br><span class="line">dedict[<span class="string">'nokey'</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="OrderedDict"><a href="#OrderedDict" class="headerlink" title="OrderedDict"></a>OrderedDict</h2><p>在<code>dict</code>中，<code>key</code>是无序的，所以当我们对<code>dict</code>做迭代时顺序是不确定的。当我们需要一个确定的顺序时可以使用<code>OrderedDict</code>。<code>OrderedDict</code>中<code>key</code>的排序是按照插入顺序排序。   </p>
-<h2 id="Counter"><a href="#Counter" class="headerlink" title="Counter"></a>Counter</h2><p><code>Counter</code>是一个简单的计数器，并且只存储次数大于一的元素，否则可以访问，但是不存储。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line">c = Counter()</span><br><span class="line">c[<span class="string">'d'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> str <span class="keyword">in</span> <span class="string">'mycounter'</span>:  </span><br><span class="line">	c[str] += <span class="number">1</span></span><br><span class="line">c</span><br></pre></td></tr></table></figure>
-<h1 id="特殊方法"><a href="#特殊方法" class="headerlink" title="特殊方法"></a>特殊方法</h1><blockquote>
-<p>通常我们无需直接使用特殊方法，直接调用特殊方法的频率应该远远低于我们去实现他们的次数。通过内置函数（例如<code>len</code>、<code>iter</code>、<code>str</code>，等等）来使用特殊方法是最好的选择。这些内置函数不仅会调用特殊方法，通常还提供额外的好处，而且对于内置的类来说，他们的速度更快。    ————《Fluent Python》</p>
-</blockquote>
-<h2 id="getitem"><a href="#getitem" class="headerlink" title="__getitem__"></a><code>__getitem__</code></h2><p><code>__getitem__</code>方法的实现使得我们可以像<code>p[key]</code>这样来取值。并且我们通过索引来访问元素时也是使用了<code>__getitem__</code>方法。</p>
-<h2 id="len"><a href="#len" class="headerlink" title="__len__"></a><code>__len__</code></h2><p>当我们使用<code>len(obj)</code>函数来获取一个对象的长度时，便是调用了<code>__len__</code>方法。</p>
-<h2 id="repr-or-str"><a href="#repr-or-str" class="headerlink" title="__repr__ or __str__"></a><code>__repr__</code> or <code>__str__</code></h2><p>简单来说这两个方法都是用于显示的，但是<code>__str__</code>是面向用户的，<code>__repr__</code>是面向程序员的。<br>在使用<code>str()</code>或者是<code>print()</code>时候会首先调用<code>__str__</code>方法，并且这种方法返回的字符串对终端用户更友好。在没有实现<code>__str__</code>方法时，两个函数回去调用<code>__repr__</code>方法。如果两个方法二选一去实现，显而易见后者是我们的选择。</p>
-<h2 id="enter-and-exit"><a href="#enter-and-exit" class="headerlink" title="__enter__ and __exit__"></a><code>__enter__</code> and <code>__exit__</code></h2><p>用于上下文管理，简单讲解见<a href="https://darren2017.github.io/2018/09/05/Flask-个人进阶/#上下文">这里</a>。</p>
-<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ul>
-<li>跟运算符无关的特殊方法<br>  <img src="https://ww1.sinaimg.cn/large/005YhI8igy1fv1fapz076j30t50q1wks" alt="picture">  </li>
-<li>根运算符相关的特殊方法<br>  <img src="https://ww3.sinaimg.cn/large/005YhI8igy1fv1fkixuyaj30t50rm7au" alt="picture"></li>
+        <h1 id="同步与异步-amp-阻塞与非阻塞"><a href="#同步与异步-amp-阻塞与非阻塞" class="headerlink" title="同步与异步 &amp; 阻塞与非阻塞"></a>同步与异步 &amp; 阻塞与非阻塞</h1><p>前两者与后两者并没有一一对应的关系，即同步不一定是阻塞的，也可能是非阻塞的（当让这样做意义不大），同样异步可以是阻塞的也可以是非阻塞的。  </p>
+<h2 id="同步与异步"><a href="#同步与异步" class="headerlink" title="同步与异步"></a>同步与异步</h2><p>同步与异步关注的是消息通讯机制。  </p>
+<h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><p>在发出一个调用时，如果没有得到返回结果则该调用就不会返回。也因此，同步的条件下只要返回便可以得到返回值。   </p>
+<h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><p>在发出一个调用时，该调用直接返回，正因如此并不会立刻得到调用结果。最终的调用值由被调用者通过状态、通知来通知调用者，或者通过回调函数处理。  </p>
+<h2 id="阻塞与非阻塞"><a href="#阻塞与非阻塞" class="headerlink" title="阻塞与非阻塞"></a>阻塞与非阻塞</h2><p>阻塞与非阻塞关注的是程序在等待调用结果时的状态。</p>
+<h3 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h3><p>阻塞指的是在调用结果为返回之前，当前线程会被挂起，直等到返回调用结果。</p>
+<h3 id="非阻塞"><a href="#非阻塞" class="headerlink" title="非阻塞"></a>非阻塞</h3><p>非阻塞指的是未得到调用结果时线程不会被挂起、阻塞。  </p>
+<ul>
+<li>异步时调用得到返回值时会主动通知主程序。</li>
+<li>同步时需要主程序不断检查调用是否得到了返回结果。</li>
 </ul>
-<h2 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h2><p>其他的特殊方法还有很多，与以上集中特殊方法各有异同，能力有限，时间有限不做过度描述。</p>
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><blockquote>
+<p>出场人物：老张，水壶两把（普通水壶，简称水壶；会响的水壶，简称响水壶）。  </p>
+<ol>
+<li>老张把水壶放到火上，立等水开。（同步阻塞）老张觉得自己有点傻   </li>
+<li>老张把水壶放到火上，去客厅看电视，时不时去厨房看看水开没有。（同步非阻塞）老张还是觉得自己有点傻，于是变高端了，买了把会响笛的那种水壶。水开之后，能大声发出嘀~~~~的噪音。   </li>
+<li>老张把响水壶放到火上，立等水开。（异步阻塞）老张觉得这样傻等意义不大    </li>
+<li>老张把响水壶放到火上，去客厅看电视，水壶响之前不再去看它了，响了再去拿壶。（异步非阻塞）老张觉得自己聪明了。   </li>
+</ol>
+</blockquote>
+<h1 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h1><p><code>async def</code>用来定义异步函数，其内部有异步操作。每个线程有一个事件循环，主线程调用<code>asyncio.get_event_loop()</code>时会创建事件循环，把异步的任务丢给这个循环的<code>run_until_complete()</code>方法，事件循环会安排协同程序的执行。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> concurrent.futures <span class="keyword">as</span> cf</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">myfun</span><span class="params">(i)</span>:</span></span><br><span class="line">    print(<span class="string">'start &#123;&#125;th'</span>.format(i))</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br><span class="line">    print(<span class="string">'finsh &#123;&#125;th'</span>.format(i))</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">with</span> cf.ThreadPoolExecutor(max_workers=<span class="number">10</span>) <span class="keyword">as</span> executor:</span><br><span class="line">        loop = asyncio.get_event_loop()</span><br><span class="line">        futures = (loop.run_in_executor(executor, myfun, i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>))</span><br><span class="line">        <span class="keyword">for</span> result <span class="keyword">in</span> <span class="keyword">await</span> asyncio.gather(*futures):</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">loop.run_until_complete(main())</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -405,12 +402,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/09/07/Python数据模型/">Python数据模型</a></p>
+  <p><span>本文标题:</span><a href="/2018/12/22/Python异步编程/">Python异步编程</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Darren 的个人博客">Darren</a></p>
-  <p><span>发布时间:</span>2018年09月07日 - 23:09</p>
-  <p><span>最后更新:</span>2018年09月08日 - 00:09</p>
-  <p><span>原始链接:</span><a href="/2018/09/07/Python数据模型/" title="Python数据模型">http://Darren2017.github.io/2018/09/07/Python数据模型/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Darren2017.github.io/2018/09/07/Python数据模型/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年12月22日 - 16:12</p>
+  <p><span>最后更新:</span>2018年12月22日 - 17:12</p>
+  <p><span>原始链接:</span><a href="/2018/12/22/Python异步编程/" title="Python异步编程">http://Darren2017.github.io/2018/12/22/Python异步编程/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Darren2017.github.io/2018/12/22/Python异步编程/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -457,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/04/Flask-个人进阶/" rel="next" title="Flask_个人进阶">
-                <i class="fa fa-chevron-left"></i> Flask_个人进阶
+              <a href="/2018/11/02/上下文管理器和else块/" rel="next" title="上下文管理器和else块">
+                <i class="fa fa-chevron-left"></i> 上下文管理器和else块
               </a>
             
           </div>
@@ -466,10 +463,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/08/序列构成的数组/" rel="prev" title="序列构成的数组">
-                序列构成的数组 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -635,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#collections"><span class="nav-number">1.</span> <span class="nav-text">collections</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#namedtuple"><span class="nav-number">1.1.</span> <span class="nav-text">namedtuple</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deque"><span class="nav-number">1.2.</span> <span class="nav-text">deque</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#defaultdict"><span class="nav-number">1.3.</span> <span class="nav-text">defaultdict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OrderedDict"><span class="nav-number">1.4.</span> <span class="nav-text">OrderedDict</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Counter"><span class="nav-number">1.5.</span> <span class="nav-text">Counter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特殊方法"><span class="nav-number">2.</span> <span class="nav-text">特殊方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#getitem"><span class="nav-number">2.1.</span> <span class="nav-text">__getitem__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#len"><span class="nav-number">2.2.</span> <span class="nav-text">__len__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repr-or-str"><span class="nav-number">2.3.</span> <span class="nav-text">__repr__ or __str__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enter-and-exit"><span class="nav-number">2.4.</span> <span class="nav-text">__enter__ and __exit__</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">2.5.</span> <span class="nav-text">附录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Others"><span class="nav-number">2.6.</span> <span class="nav-text">Others</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#同步与异步-amp-阻塞与非阻塞"><span class="nav-number">1.</span> <span class="nav-text">同步与异步 &amp; 阻塞与非阻塞</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#同步与异步"><span class="nav-number">1.1.</span> <span class="nav-text">同步与异步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同步"><span class="nav-number">1.1.1.</span> <span class="nav-text">同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步"><span class="nav-number">1.1.2.</span> <span class="nav-text">异步</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#阻塞与非阻塞"><span class="nav-number">1.2.</span> <span class="nav-text">阻塞与非阻塞</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阻塞"><span class="nav-number">1.2.1.</span> <span class="nav-text">阻塞</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非阻塞"><span class="nav-number">1.2.2.</span> <span class="nav-text">非阻塞</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例"><span class="nav-number">1.3.</span> <span class="nav-text">举例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单使用"><span class="nav-number">2.</span> <span class="nav-text">简单使用</span></a></li></ol></div>
             
 
           </div>
