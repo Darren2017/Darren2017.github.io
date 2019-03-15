@@ -110,7 +110,7 @@
 <meta property="og:url" content="http://Darren2017.github.io/2018/04/10/python-之器/index.html">
 <meta property="og:site_name" content="Darren">
 <meta property="og:description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：1234567891011#登陆限制装饰器def login_required(func):    @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper">
-<meta property="og:updated_time" content="2018-05-22T11:49:30.896Z">
+<meta property="og:updated_time" content="2019-03-15T03:21:32.123Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 之器">
 <meta name="twitter:description" content="装饰器概念： 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能，装饰器的返回值也是一个函数/类对象。    代码示例：1234567891011#登陆限制装饰器def login_required(func):    @wraps(func)                #wraps，可用作一个装饰器，简化调用update_wrapper">
@@ -368,7 +368,7 @@
 <h2 id="引例："><a href="#引例：" class="headerlink" title="引例："></a>引例：</h2><blockquote>
 <p>每个人都有的内裤主要功能是用来遮羞，但是到了冬天它没法为我们防风御寒，咋办？我们想到的一个办法就是把内裤改造一下，让它变得更厚更长，这样一来，它不仅有遮羞功能，还能提供保暖，不过有个问题，这个内裤被我们改造成了长裤后，虽然还有遮羞功能，但本质上它不再是一条真正的内裤了。于是聪明的人们发明长裤，在不影响内裤的前提下，直接把长裤套在了内裤外面，这样内裤还是内裤，有了长裤后宝宝再也不冷了。装饰器就像我们这里说的长裤，在不影响内裤作用的前提下，给我们的身子提供了保暖的功效。</p>
 </blockquote>
-<h2 id="个人理解："><a href="#个人理解：" class="headerlink" title="个人理解："></a>个人理解：</h2><p>装饰器本质上是一个函数或者类，只不过这个函数/类比较特殊。  </p>
+<h2 id="个人理解："><a href="#个人理解：" class="headerlink" title="个人理解："></a>个人理解：</h2><p>装饰器本质上是一个函数或者类，只不过这个函数/类比较特殊。</p>
 <ol>
 <li><p>例如当我们需要确定某一个函数运行所需的时间时，我们可以写一个函数来完成。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">time_func</span><span class="params">()</span>:</span></span><br><span class="line">    s_time = time.time()</span><br><span class="line">    func()                  <span class="comment">#所需要确定运行时间的函数</span></span><br><span class="line">    e_time = time.time()</span><br><span class="line">    <span class="keyword">print</span> <span class="string">'运行时间：%s'</span> % (e_time - s_time)</span><br></pre></td></tr></table></figure>
@@ -378,10 +378,14 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">times</span><span class="params">(func)</span>:</span>        <span class="comment">#定义一个装饰器，可以保存在一个单独的文件中，使用时引入</span></span><br><span class="line"><span class="meta">    @wraps(func)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*arg, **kwarg)</span>:</span></span><br><span class="line">        s_time = time.time()</span><br><span class="line">        func()</span><br><span class="line">        e_time = time.time()</span><br><span class="line">        <span class="keyword">print</span> <span class="string">'函数耗时%s'</span> % (e_time - s_time)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line"><span class="meta">@times          #定义函数时加上装饰器, =&gt;func = times(func)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span>:</span>...............</span><br></pre></td></tr></table></figure>
 <p> 可以看出正如装饰器的名字所言，装饰器就是对函数做了一个包装、修饰，但是并不改变原函数固有的功能。（python支持将函数作为参数传入另一个函数）</p>
 </li>
-<li>关于 *args **kwargs:<ol>
+<li><p>关于 *args **kwargs:</p>
+<ol>
 <li>我们所要装饰的函数有很多是需要参数的，所以说我们可能会想到在wrapper()直接添加参数，但是如果函数所需要的参数个数是不确定的，那如果每次都修改所定义的装饰器，那么装饰器便失去了其普适性。所以引入了*args **kwargs支持接受动态参数。</li>
 <li>*args表示任何多个无名参数，它是一个tuple；**kwargs表示关键字参数，它是一个dict.</li>
 </ol>
+</li>
+<li><p>带参数的装饰器 </p>
+ <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">use_logging</span><span class="params">(level)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorator</span><span class="params">(func)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> level == <span class="string">"warn"</span>:</span><br><span class="line">                logging.warn(<span class="string">"%s is running"</span> % func.__name__)</span><br><span class="line">            <span class="keyword">elif</span> level == <span class="string">"info"</span>:</span><br><span class="line">                logging.info(<span class="string">"%s is running"</span> % func.__name__)</span><br><span class="line">            <span class="keyword">return</span> func(*args)</span><br><span class="line">        <span class="keyword">return</span> wrapper	</span><br><span class="line">    <span class="keyword">return</span> decorator</span><br><span class="line"></span><br><span class="line"><span class="meta">@use_logging(level="warn")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(name=<span class="string">'foo'</span>)</span>:</span></span><br><span class="line">    print(<span class="string">"i am %s"</span> % name)</span><br><span class="line"></span><br><span class="line">foo()</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>类装饰器:</p>
 <ol>
@@ -442,7 +446,7 @@
   <p><span>本文标题:</span><a href="/2018/04/10/python-之器/">python 之器</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 Darren 的个人博客">Darren</a></p>
   <p><span>发布时间:</span>2018年04月10日 - 08:04</p>
-  <p><span>最后更新:</span>2018年05月22日 - 19:05</p>
+  <p><span>最后更新:</span>2019年03月15日 - 11:03</p>
   <p><span>原始链接:</span><a href="/2018/04/10/python-之器/" title="python 之器">http://Darren2017.github.io/2018/04/10/python-之器/</a>
     <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://Darren2017.github.io/2018/04/10/python-之器/"  aria-label="复制成功！"></i></span>
   </p>
@@ -718,7 +722,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共19.7k字</span>
+  <span class="post-count">博客全站共字</span>
 </div>
 
         
